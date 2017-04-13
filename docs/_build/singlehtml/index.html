@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Documentação CheckUpdate3</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Pesquisar" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-checkupdate3-s-documentation">
+<h1>Welcome to CheckUpdate3&#8217;s documentation!<a class="headerlink" href="#welcome-to-checkupdate3-s-documentation" title="Link permanente para este título">¶</a></h1>
+<div class="toctree-wrapper compound">
+<span id="document-intro"></span><div class="section" id="introducao">
+<h2>Introdução<a class="headerlink" href="#introducao" title="Link permanente para este título">¶</a></h2>
+<p>Aplicação de gerenciamento de inventário físico. Vempara substituir planilhas que fazem esse controle.</p>
+</div>
+<span id="document-tecnologias"></span><div class="section" id="tecnologias-utilizadas">
+<h2>Tecnologias utilizadas<a class="headerlink" href="#tecnologias-utilizadas" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li>Python</li>
+<li>SQAlchemy</li>
+<li>MySql(MariaDB)</li>
+<li>Flask</li>
+</ul>
+<div class="section" id="bibliotecas-adicionais">
+<h3>Bibliotecas adicionais<a class="headerlink" href="#bibliotecas-adicionais" title="Link permanente para este título">¶</a></h3>
+<ul class="simple">
+<li>re (expressões regulares)</li>
+</ul>
+</div>
+</div>
+<span id="document-classes"></span><div class="section" id="modulos">
+<h2>Módulos<a class="headerlink" href="#modulos" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li>inconsistent_check: checa inconsistencia antes de persistencia no banco.</li>
+<li>dbconnect: classe de conexão no banco.</li>
+<li>form2db: tradutor do formulário para o banco.</li>
+<li>app.py: criadores de rotas do flask.</li>
+</ul>
+<div class="section" id="app-py">
+<h3>App.py<a class="headerlink" href="#app-py" title="Link permanente para este título">¶</a></h3>
+<p>rotas:</p>
+<blockquote>
+<div><ul class="simple">
+<li>index: homepage, template=index.html.</li>
+<li>consulta: resultado da consulta, template=consulta.html</li>
+<li>adiciona:</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<span id="document-funcionalidades"></span><div class="section" id="funcionalidades">
+<h2>Funcionalidades<a class="headerlink" href="#funcionalidades" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li>Cadastro de equipamento</li>
+<li>Edição de equipamento</li>
+<li>Busca de equipamento</li>
+<li>Importação de Planilha</li>
+<li>Exportação para Planilha</li>
+</ul>
+</div>
+<span id="document-fluxo"></span><div class="section" id="fluxo">
+<h2>Fluxo<a class="headerlink" href="#fluxo" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Página home:</dt>
+<dd><ul class="first last">
+<li>Consulta -&gt; Query no banco -&gt; apresenta consulta front end (extende: Editar)</li>
+<li>Editar -&gt; Carrega as mudanças -&gt; Submit mudanças -&gt; Checa inconsistencias -&gt; Persiste no banco.</li>
+<li>Adciona -&gt; Carrega valores -&gt; Submit mudanças -&gt; Checa inconsistências -&gt; Periste no banco.</li>
+<li><em>Importar -&gt; Versão 2.0</em></li>
+<li><em>Exportar -&gt; Versão 2.0</em></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html#document-index">Tabela de Conteúdos</a></h3>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-intro">Introdução</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-tecnologias">Tecnologias utilizadas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#bibliotecas-adicionais">Bibliotecas adicionais</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-classes">Módulos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#app-py">App.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-funcionalidades">Funcionalidades</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-fluxo">Fluxo</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html#document-index">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Thiago Tosto.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

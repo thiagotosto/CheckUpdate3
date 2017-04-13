@@ -1,0 +1,41 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.form-consulta {
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+
+#submit {
+  margin-top: 10px;
+  left: 50%;
+  margin-left: -42px;
+  position: absolute;
+}
+
+.painel-custom {
+  margin-top: 10px;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.painel-result {
+  margin-top: 10px;
+  max-width: 80%;
+  overflow-x: scroll;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hidden {
+  display: none;
+}

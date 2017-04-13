@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="container">
+
+  <div class="starter-template">
+    <h1>Consulte o inventário</h1>
+    <p class="lead"></p>
+  </div>
+
+  <form method="post" action="{{ url_for('consulta') }}">
+    <div class="form-consulta">
+      <div class="row">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <button type="button" id="active" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Campo <span class="caret"></span></button>
+            <input type="text" class="required form-control hidden" required id="campo" name="campo"></input>
+            <ul class="dropdown-menu">
+              <li><a href="#" onclick="change_field_value('Nome'); set_type('text'); set_placeholder('');">Nome</a></li>
+              <li><a href="#" onclick="change_field_value('Baia'); set_type('number'); set_placeholder('');">Baia</a></li>
+              <li><a href="#" onclick="change_field_value('Categoria'); set_type('text'); set_placeholder('');">Categoria</a></li>
+              <li><a href="#" onclick="change_field_value('Resp'); set_type('text'); set_placeholder('Operações...');">Resp</a></li>
+              <li><a href="#" onclick="change_field_value('Serial'); set_type('text'); set_placeholder('BRC22...');">Serial</a></li>
+              <li><a href="#" onclick="change_field_value('Fabricante'); set_type('text'); set_placeholder('DELL, HP...');">Fabricante</a></li>
+              <li><a href="#" onclick="change_field_value('Modelo'); set_type('text'); set_placeholder('');">Modelo</a></li>
+              <li><a href="#" onclick="change_field_value('Localizacao'); set_type('text'); set_placeholder('Sala de equipamentos, HPA...');">Localização</a></li>
+              <li><a href="#" onclick="change_field_value('Rack'); set_type('number'); set_placeholder('');">Rack</a></li>
+              <li><a href="#" onclick="change_field_value('Patrimonio'); set_type('number'); set_placeholder('');">Patrimônio</a></li>
+              <li><a href="#" onclick="change_field_value('Hostname'); set_type('text'); set_placeholder('rj2k12..., rjlnx..., pwbsrv...');">Hostname</a></li>
+              <li><a href="#" onclick="change_field_value('IP'); set_type('number'); set_placeholder('111.111.111.111');">IP</a></li>
+              <li><a href="#" onclick="change_field_value('Em uso?'); set_type('text'); set_placeholder('S ou N');">Em uso?</a></li>
+              <li><a href="#" onclick="change_field_value('Said'); set_type('number');">SAID</a></li>
+              <li><a href="#" onclick="change_field_value('Contrato'); set_type('text');">Contrato(FL)</a></li>
+              <li><a href="#" onclick="change_field_value('Start Date'); set_type('date');">Start Date</a></li>
+              <li><a href="#" onclick="change_field_value('End Date'); set_type('date');">End Date</a></li>
+              <li><a href="#" onclick="change_field_value('Legado'); set_type('text');">Legado</a></li>
+
+            </ul>
+          </div><!-- /btn-group -->
+          <input type="text" class="form-control" id="valor" name="valor" aria-label="...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Add</button>
+          </span>
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+  </form>
+
+  <!-- Tabela de clausulas de consulta -->
+  {% if globalSession['consulta'] %}
+
+  <div class="row">
+    <div class="panel panel-default painel-custom">
+      <div class="panel-heading">Clausulas</div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for clausula in globalSession['consulta'] %}
+          <tr>
+            <td>{{ clausula['campo'] }}</td>
+            <td>{{ clausula['valor'] }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  {% endif %}
+
+  <!--<p>Current: {{ session['current'] }}</p>-->
+  <!--<p>Consulta: {{ globalSession['consulta'] }}</p>-->
+
+  <div class="row">
+    <form action="{{ url_for('consulta_result') }}">
+      <button type="submit" class="btn btn-primary" id="submit" aria-label="Left Align">{% if not globalSession['consulta'] %}Mostrar tudo{% else %}Consultar{% endif %}</button>
+    </form>
+  </div>
+
+
+</div><!-- /.container -->
+<script src="{{ url_for('static', filename='./styles/homepage.js') }}"></script>
+{% endblock %}

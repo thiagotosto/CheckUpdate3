@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if globalSession['consulta_result'] %}
+
+<div class="row">
+  <div class="panel panel-default painel-result">
+    <div class="panel-heading">Resultado da pesquisa</div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          {% for i in globalValues['Header'] %}<th>{{ i }}</th>{% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+      {% for object in globalSession['consulta_result'] %}
+        <tr>
+          <td>{% if object.nome != None %}{{ object.nome.decode('cp1252') }} {% endif %}</td>
+          <td>{% if object.baia  != None %}{{ object.baia }} {% endif %}</td>
+          <td>{% if object.categoria != None %}{{ object.categoria.decode('cp1252') }} {% endif %}</td>
+          <td>{% if object.resp != None %}{{ object.resp.decode('cp1252') }} {% endif %}</td>
+          <td>{% if object.serial  != None %}{{ object.serial.decode('cp1252') }} {% endif %}</td>
+          <td>{% if object.fabricante != None %}{{ object.fabricante.decode('cp1252') }} {% endif %}</td>
+          <td>{% if object.modelo != None %}{{ object.modelo.decode('cp1252') }} {% endif %}</td>
+          <td>{% if object.localizacao != None %}{{ object.localizacao.decode('cp1252') }} {% endif %}</td>
+          <td>{% if object.rack  != None %}{{ object.rack }} {% endif %}</td>
+          <td>{% if object.patrimonio  != None %}{{ object.patrimonio }} {% endif %}</td>
+          <td>{% if object.hostname != None %}{{ object.hostname.decode('cp1252') }} {% endif %}</td>
+          <td>{% if object.ip != None %}{{ object.ip.decode('cp1252') }} {% endif %}</td>
+          <td>{% if object.em_uso != None %}{{ object.em_uso.decode('cp1252') }} {% endif %}</td>
+          <td>{% if object.said  != None %}{{ object.said }} {% endif %}</td>
+          <td>{% if object.contrato  != None %}{{ object.contrato.decode('cp1252') }} {% endif %}</td>
+          <td>{% if object.start_date  != None %}{{ object.start_date }} {% endif %}</td>
+          <td>{% if object.end_date  != None %}{{ object.end_date }} {% endif %}</td>
+          <td>{% if object.leg_prod != None %}{{ object.leg_prod.decode('cp1252') }} {% endif %}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+</div>
+{% else %}
+
+<div class=container>
+  <div class="starter-template">
+    <h1>Objeto não encontrado!</h1>
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}
