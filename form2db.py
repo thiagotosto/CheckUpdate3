@@ -7,8 +7,8 @@ def form2db_consulta(query):    # Recebe como parametro uma lista de dicionario 
     q = session.query(Inventario)
 
     for objeto in query:
-        filters.append(objeto['campo'] == objeto['valor'])
-
+        #filters.append(objeto['campo'] == objeto['valor'])
+        filters.append(objeto)
     result = q.filter(*filters).all()
 
     return result
@@ -18,40 +18,40 @@ def binder(to_bind):    #recebe como parametro um tupla de dicionarios que repre
 
     for objeto in to_bind:
         if objeto['campo'] == 'Nome':
-            query.append({'campo': Inventario.nome, 'valor': objeto['valor']})
+            query.append(Inventario.serial.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'Baia':
-            query.append({'campo': Inventario.baia, 'valor': objeto['valor']})
+            query.append(Inventario.baia == objeto['valor'])
         if objeto['campo'] == 'Categoria':
-            query.append({'campo': Inventario.categoria, 'valor': objeto['valor']})
+            query.append(Inventario.categoria.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'Resp':
-            query.append({'campo': Inventario.resp, 'valor': objeto['valor']})
+            query.append(Inventario.resp.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'Serial':
-            query.append({'campo': Inventario.serial, 'valor': objeto['valor']})
+            query.append(Inventario.serial.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'Fabricante':
-            query.append({'campo': Inventario.fabricante, 'valor': objeto['valor']})
+            query.append(Inventario.fabricante.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'Modelo':
-            query.append({'campo': Inventario.modelo, 'valor': objeto['valor']})
+            query.append(Inventario.modelo.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'Localizacao':
-            query.append({'campo': Inventario.localizacao, 'valor': objeto['valor']})
+            query.append(Inventario.localizacao.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'Rack':
-            query.append({'campo': Inventario.rack, 'valor': objeto['valor']})
+            query.append(Inventario.rack.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'Patrimonio':
-            query.append({'campo': Inventario.patrimonio, 'valor': objeto['valor']})
+            query.append(Inventario.patrimonio.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'Hostname':
-            query.append({'campo': Inventario.hostname, 'valor': objeto['valor']})
+            query.append(Inventario.hostname.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'IP':
-            query.append({'campo': Inventario.ip, 'valor': objeto['valor']})
+            query.append(Inventario.ip.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'Em uso?':
-            query.append({'campo': Inventario.em_uso, 'valor': objeto['valor']})
+            query.append(Inventario.em_uso.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'Said':
-            query.append({'campo': Inventario.said, 'valor': objeto['valor']})
+            query.append(Inventario.said.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'Contrato':
-            query.append({'campo': Inventario.contrato, 'valor': objeto['valor']})
+            query.append(Inventario.contrato.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'Start Date':
-            query.append({'campo': Inventario.start_date, 'valor': objeto['valor']})
+            query.append(Inventario.start_date.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'End Date':
-            query.append({'campo': Inventario.end_date, 'valor': objeto['valor']})
+            query.append(Inventario.end_date.op('regexp')('.*%s.*' % objeto['valor']))
         if objeto['campo'] == 'Legado':
-            query.append({'campo': Inventario.leg_prod, 'valor': objeto['valor']})
+            query.append(Inventario.legado.op('regexp')('.*%s.*' % objeto['valor']))
 
     return query

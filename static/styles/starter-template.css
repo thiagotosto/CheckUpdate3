@@ -39,3 +39,11 @@ body {
 .hidden {
   display: none;
 }
+
+.link-geral {
+  color: #222;
+}
+
+.link-geral:hover {
+    color: #9d9d9d;
+}

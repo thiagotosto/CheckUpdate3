@@ -1,0 +1,19 @@
+Inconsistence Check:
+
+- Nome: upper;
+- Baia: js.numero;
+- Categoria: lower;
+- Resposta: captalize;
+- Serial: upper;
+- Fabricante: upper; js.opções_particulares(DELL, HP);
+- Modelo: capitalize_blocos;
+- Rack: js.numero
+- Patrimonio: js.numero
+- Hostname: lower;
+- IP: ip_type;
+- Em Uso?: opções_particulares(S, N);
+- Said: js.numero
+- Contrato: upper; js.opções_particulares(GLOBOSATRJ*, GLOBOSATSP*);
+- Start Date: js.data
+- End Date: js.data
+- Legado/Produção: js.opções_particulares(Legado, Produção);

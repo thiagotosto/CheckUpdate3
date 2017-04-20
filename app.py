@@ -7,7 +7,8 @@ app = Flask(__name__)
 app.secret_key = 'likujnyhtbgrvf67543'
 
 globalSession = dict()
-globalSession['consulta'] = []
+globalSession['consulta'] = []      #inicializando variavel global de Consulta
+globalSession['update'] = []        #inicializando variavel global de Update
 globalValues = dict()
 globalValues['Header'] = ['Nome','Baia','Categoria','Resp','Serial','Fabricante','Modelo','Localizacao','Rack','Patrimonio','Hostname','IP','Em uso?','SAID','Contrato(FL)','Start Date','End Date','Legado']
 
@@ -15,13 +16,21 @@ globalValues['Header'] = ['Nome','Baia','Categoria','Resp','Serial','Fabricante'
 def index():
     return render_template('index.html', globalSession=globalSession)
 
-
+#renderizando clausulas da consulta
 @app.route('/consulta/', methods=['POST'])
 def consulta():
     globalSession['consulta'].append({'campo': request.form['campo'], 'valor': request.form['valor']})
     print "globalSession['consulta']: ", globalSession['consulta']
 
     return render_template('index.html', globalSession=globalSession)
+
+#renderizando clausulas do update
+@app.route('/consulta_result/update', methods=['POST'])
+def update():
+    globalSession['update'].append({'campo': request.form['campo'], 'valor': request.form['valor']})
+
+    return render_template('consulta_result.html', globalSession=globalSession, globalValues=globalValues)
+
 
 @app.route('/consulta_result/')
 def consulta_result():
