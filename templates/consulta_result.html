@@ -35,7 +35,7 @@
           <td>{% if object.start_date  != None %}{{ object.start_date }} {% endif %}</td>
           <td>{% if object.end_date  != None %}{{ object.end_date }} {% endif %}</td>
           <td>{% if object.leg_prod != None %}{{ object.leg_prod.decode('cp1252') }} {% endif %}</td>
-          <td><a class="link-geral" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></a></td>
+          <td><a class="link-geral" onclick="set_modal_title({{ object.serial }})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></a></td>
         </tr>
       {% endfor %}
       </tbody>
@@ -53,7 +53,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Editando</h4>
+        <h4 class="modal-title" id="modal-title">Editando</h4>
       </div>
 
       <!-- Corpo do modal -->
@@ -124,7 +124,7 @@
               {% endif %}
 
 
-            </div><!-- /.row -->
+            </div><!-- .row -->
           </div>
         </form>
       </div>

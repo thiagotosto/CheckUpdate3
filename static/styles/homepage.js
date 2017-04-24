@@ -32,3 +32,8 @@ function validateInsert() {
 function set_placeholder(value) {
   document.getElementById('valor').placeholder = value
 }
+
+function set_modal_title(value) {
+  alert('PASSEI')
+  document.getElementById('modal-title').innerHTML = value
+}

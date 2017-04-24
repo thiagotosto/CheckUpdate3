@@ -31,7 +31,7 @@ def update():
 
     return render_template('consulta_result.html', globalSession=globalSession, globalValues=globalValues)
 
-
+#renderiza o resultado da consulta
 @app.route('/consulta_result/')
 def consulta_result():
 
