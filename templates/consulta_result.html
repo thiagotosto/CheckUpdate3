@@ -35,7 +35,7 @@
           <td>{% if object.start_date  != None %}{{ object.start_date }} {% endif %}</td>
           <td>{% if object.end_date  != None %}{{ object.end_date }} {% endif %}</td>
           <td>{% if object.leg_prod != None %}{{ object.leg_prod.decode('cp1252') }} {% endif %}</td>
-          <td><a class="link-geral" onclick="set_modal_title({{ object.serial }})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></a></td>
+          <td><a class="link-geral" data-toggle="modal" data-target="#myModal" onclick="set_modal_title('{{ object.serial.decode('cp1252') }}')"><span class="glyphicon glyphicon-edit"></a></td>
         </tr>
       {% endfor %}
       </tbody>
@@ -47,94 +47,43 @@
 
 <!-- Modal de update -->
 <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <form name="edicao" method="post" action="{{ url_for('update') }}">
+    <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" id="modal-title">Editando</h4>
-      </div>
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="modal-title">Editando</h4>
+        </div>
 
-      <!-- Corpo do modal -->
-      <div class="modal-body">
+        <div class="form-update">
+          <div class="row">
 
-        <form name="clausula" method="post" action="{{ url_for('update') }}">
-          <div class="form-consulta">
-            <div class="row">
+            {% for i in globalValues['Header'] %}
               <div class="input-group">
-                <div class="input-group-btn">
-                  <button type="button" id="active" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Campo <span class="caret"></span></button>
-                  <input type="text" class="required form-control hidden" required id="campo" name="campo"></input>
-                  <ul class="dropdown-menu">
-                    <li><a href="#" onclick="change_field_value('Nome'); set_type('text'); set_placeholder('');">Nome</a></li>
-                    <li><a href="#" onclick="change_field_value('Baia'); set_type('number'); set_placeholder('');">Baia</a></li>
-                    <li><a href="#" onclick="change_field_value('Categoria'); set_type('text'); set_placeholder('');">Categoria</a></li>
-                    <li><a href="#" onclick="change_field_value('Resp'); set_type('text'); set_placeholder('Operações...');">Resp</a></li>
-                    <li><a href="#" onclick="change_field_value('Serial'); set_type('text'); set_placeholder('BRC22...');">Serial</a></li>
-                    <li><a href="#" onclick="change_field_value('Fabricante'); set_type('text'); set_placeholder('DELL, HP...');">Fabricante</a></li>
-                    <li><a href="#" onclick="change_field_value('Modelo'); set_type('text'); set_placeholder('');">Modelo</a></li>
-                    <li><a href="#" onclick="change_field_value('Localizacao'); set_type('text'); set_placeholder('Sala de equipamentos, HPA...');">Localização</a></li>
-                    <li><a href="#" onclick="change_field_value('Rack'); set_type('number'); set_placeholder('');">Rack</a></li>
-                    <li><a href="#" onclick="change_field_value('Patrimonio'); set_type('number'); set_placeholder('');">Patrimônio</a></li>
-                    <li><a href="#" onclick="change_field_value('Hostname'); set_type('text'); set_placeholder('rj2k12..., rjlnx..., pwbsrv...');">Hostname</a></li>
-                    <li><a href="#" onclick="change_field_value('IP'); set_type('number'); set_placeholder('111.111.111.111');">IP</a></li>
-                    <li><a href="#" onclick="change_field_value('Em uso?'); set_type('text'); set_placeholder('S ou N');">Em uso?</a></li>
-                    <li><a href="#" onclick="change_field_value('Said'); set_type('number');">SAID</a></li>
-                    <li><a href="#" onclick="change_field_value('Contrato'); set_type('text');">Contrato(FL)</a></li>
-                    <li><a href="#" onclick="change_field_value('Start Date'); set_type('date');">Start Date</a></li>
-                    <li><a href="#" onclick="change_field_value('End Date'); set_type('date');">End Date</a></li>
-                    <li><a href="#" onclick="change_field_value('Legado'); set_type('text');">Legado</a></li>
-
-                  </ul>
-                </div><!-- /btn-group -->
-                <input type="text" class="form-control" id="valor" name="valor" aria-label="...">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="submit">Add</button>
-                </span>
-              </div><!-- /input-group -->
-
-              <!-- Tabela de clausulas de consulta -->
-              {% if globalSession['update'] %}
-
-              <div class="row">
-                <div class="panel panel-default painel-custom">
-                  <div class="panel-heading">Clausulas</div>
-
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Campo</th>
-                        <th>Valor</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    {% for clausula in globalSession['update'] %}
-                      <tr>
-                        <td>{{ clausula['campo'] }}</td>
-                        <td>{{ clausula['valor'] }}</td>
-                      </tr>
-                    {% endfor %}
-                    </tbody>
-                  </table>
-
-                </div>
+                <span class="input-group-addon" id="basic-addon1">{{ i }}</span>
+                <input type="text" class="form-control" placeholder="" name="{{ i }}" aria-describedby="basic-addon1">
               </div>
+            {% endfor %}
 
-              {% endif %}
-
-
-            </div><!-- .row -->
           </div>
-        </form>
+        </div>
+
       </div>
-      <div class="modal-footer">
+
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+          <button type="submit" class="btn btn-primary" id="submit" aria-label="Left Align">Enviar</button>
+        </div>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
     </div>
 
-  </div>
-</div>
+  </form>
+</div> <!-- end modal -->
+
+
 
 {% else %}
 
@@ -154,3 +103,85 @@
 
 
 <!-- Trigger the modal with a button -->
+
+
+
+
+
+
+
+
+<!-- -------------------------------------------------------------- LIXO --------------------------------------------------------------------- -->
+
+<!-- teste
+<!-- Corpo do modal
+<div class="modal-body">
+
+  <form name="clausula" method="post" action="{{ url_for('update') }}">
+    <div class="form-consulta">
+      <div class="row">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <button type="button" id="active" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Campo <span class="caret"></span></button>
+            <input type="text" class="required form-control hidden" required id="campo" name="campo"></input>
+            <ul class="dropdown-menu">
+              <li><a href="#" onclick="change_field_value('Nome'); set_type('text'); set_placeholder('');">Nome</a></li>
+              <li><a href="#" onclick="change_field_value('Baia'); set_type('number'); set_placeholder('');">Baia</a></li>
+              <li><a href="#" onclick="change_field_value('Categoria'); set_type('text'); set_placeholder('');">Categoria</a></li>
+              <li><a href="#" onclick="change_field_value('Resp'); set_type('text'); set_placeholder('Operações...');">Resp</a></li>
+              <li><a href="#" onclick="change_field_value('Serial'); set_type('text'); set_placeholder('BRC22...');">Serial</a></li>
+              <li><a href="#" onclick="change_field_value('Fabricante'); set_type('text'); set_placeholder('DELL, HP...');">Fabricante</a></li>
+              <li><a href="#" onclick="change_field_value('Modelo'); set_type('text'); set_placeholder('');">Modelo</a></li>
+              <li><a href="#" onclick="change_field_value('Localizacao'); set_type('text'); set_placeholder('Sala de equipamentos, HPA...');">Localização</a></li>
+              <li><a href="#" onclick="change_field_value('Rack'); set_type('number'); set_placeholder('');">Rack</a></li>
+              <li><a href="#" onclick="change_field_value('Patrimonio'); set_type('number'); set_placeholder('');">Patrimônio</a></li>
+              <li><a href="#" onclick="change_field_value('Hostname'); set_type('text'); set_placeholder('rj2k12..., rjlnx..., pwbsrv...');">Hostname</a></li>
+              <li><a href="#" onclick="change_field_value('IP'); set_type('number'); set_placeholder('111.111.111.111');">IP</a></li>
+              <li><a href="#" onclick="change_field_value('Em uso?'); set_type('text'); set_placeholder('S ou N');">Em uso?</a></li>
+              <li><a href="#" onclick="change_field_value('Said'); set_type('number');">SAID</a></li>
+              <li><a href="#" onclick="change_field_value('Contrato'); set_type('text');">Contrato(FL)</a></li>
+              <li><a href="#" onclick="change_field_value('Start Date'); set_type('date');">Start Date</a></li>
+              <li><a href="#" onclick="change_field_value('End Date'); set_type('date');">End Date</a></li>
+              <li><a href="#" onclick="change_field_value('Legado'); set_type('text');">Legado</a></li>
+
+            </ul>
+          </div><!-- /btn-group
+          <input type="text" class="form-control" id="valor" name="valor" aria-label="...">
+          <span class="input-group-btn">
+            <button class="btn btn-default">Add</button>
+          </span>
+        </div><!-- /input-group
+
+        <!-- Tabela de clausulas de consulta
+        {% if globalSession['update'] %}
+
+        <div class="row">
+          <div class="panel panel-default painel-custom">
+            <div class="panel-heading">Clausulas</div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Campo</th>
+                  <th>Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for clausula in globalSession['update'] %}
+                <tr>
+                  <td>{{ clausula['campo'] }}</td>
+                  <td>{{ clausula['valor'] }}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+
+        {% endif %}
+
+
+      </div><!-- .row
+    </div>
+  </form>-->

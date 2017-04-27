@@ -38,6 +38,9 @@ def consulta_result():
     bind = binder(globalSession['consulta'])
     globalSession['consulta_result'] = form2db_consulta(bind)
 
+    #teste de json dump
+    #teste = json.dumps(globalSession['consulta_result'])
+
     return render_template('consulta_result.html', globalSession=globalSession, globalValues=globalValues)
 
 @app.route('/reset')
@@ -45,6 +48,9 @@ def reset_session():
 
     for i in range(len(globalSession['consulta'])):
         globalSession['consulta'].pop(0)
+
+    for i in range(len(globalSession['update'])):
+        globalSession['update'].pop(0)
 
     if 'consulta_result' in globalSession.keys():
         for i in range(len(globalSession['consulta_result'])):
