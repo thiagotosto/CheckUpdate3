@@ -16,6 +16,8 @@ globalValues['Header'] = ['Nome','Baia','Categoria','Resp','Serial','Fabricante'
 def index():
     return render_template('index.html', globalSession=globalSession)
 
+#CONSULTA ---------------------------------------------------------------------------------------------------
+
 #renderizando clausulas da consulta
 @app.route('/consulta/', methods=['POST'])
 def consulta():
@@ -23,13 +25,6 @@ def consulta():
     print "globalSession['consulta']: ", globalSession['consulta']
 
     return render_template('index.html', globalSession=globalSession)
-
-#renderizando clausulas do update
-@app.route('/consulta_result/update', methods=['POST'])
-def update():
-    globalSession['update'].append({'campo': request.form['campo'], 'valor': request.form['valor']})
-
-    return render_template('consulta_result.html', globalSession=globalSession, globalValues=globalValues)
 
 #renderiza o resultado da consulta
 @app.route('/consulta_result/')
@@ -42,6 +37,20 @@ def consulta_result():
     #teste = json.dumps(globalSession['consulta_result'])
 
     return render_template('consulta_result.html', globalSession=globalSession, globalValues=globalValues)
+
+#UPDATE -----------------------------------------------------------------------------------------------------
+
+#renderizando clausulas do update
+@app.route('/consulta_result/update', methods=['POST'])
+def update():
+
+
+
+    return render_template('consulta_result.html', globalSession=globalSession, globalValues=globalValues)
+
+
+
+#RESET ------------------------------------------------------------------------------------------------------
 
 @app.route('/reset')
 def reset_session():
