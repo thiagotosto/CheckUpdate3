@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.3.7)  3 APR 2017 17:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.3.7)  4 MAY 2017 16:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1188,83 +1188,102 @@ LaTeX Font Info:    Try loading font information for TS1+ptm on input line 65.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 80.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 80.
+
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 80.
+less on input line 88.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 80.
+(babel)             in language  on input line 88.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 80.
+(babel)             in language  on input line 88.
 [2
 
 ]
 Cap\'{\i }tulo 3.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 80.
-LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 88.
-Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 88.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 105.
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 104.
+less on input line 121.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 104.
+(babel)             in language  on input line 121.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 104.
+(babel)             in language  on input line 121.
 [3
 
 ]
 Cap\'{\i }tulo 4.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 104.
+(babel)             in language  on input line 121.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 124.
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 124.
+less on input line 150.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 124.
+(babel)             in language  on input line 150.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 124.
+(babel)             in language  on input line 150.
 [4
 
 ]
 Cap\'{\i }tulo 5.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 124.
+(babel)             in language  on input line 150.
+
+Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
+less on input line 176.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 176.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 176.
+[5
+
+]
+Cap\'{\i }tulo 6.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 176.
 (./CheckUpdate3.ind)
 
 Package sphinx Warning: 
 ******** ERROR !! PLEASE UPDATE titlesec.sty !!********
 ******** THIS VERSION SWALLOWS SECTION NUMBERS.********.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 153.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 199.
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 153.
+less on input line 199.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 153.
+(babel)             in language  on input line 199.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 153.
-[5
+(babel)             in language  on input line 199.
+[6
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 153.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 199.
  (./CheckUpdate3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 153.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 153.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 199.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 199.
 Package rerunfilecheck Info: File `CheckUpdate3.out' has not changed.
-(rerunfilecheck)             Checksum: 1E4D996B48B0D70B25BF6711DA7D2AA3;606.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 153.
+(rerunfilecheck)             Checksum: C6EDA1590733FDFEB879438A7D4BF49A;993.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 199.
  ) 
 Here is how much of TeX's memory you used:
- 13648 strings out of 493029
- 187508 string characters out of 6136235
- 276714 words of memory out of 5000000
- 16865 multiletter control sequences out of 15000+600000
+ 13659 strings out of 493029
+ 187676 string characters out of 6136235
+ 276867 words of memory out of 5000000
+ 16872 multiletter control sequences out of 15000+600000
  45242 words of font info for 61 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  37i,11n,45p,284b,370s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1274,10 +1293,10 @@ e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
 1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
 utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on CheckUpdate3.pdf (7 pages, 68983 bytes).
+Output written on CheckUpdate3.pdf (8 pages, 73431 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
- 15 named destinations out of 1000 (max. 500000)
- 69 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 125 PDF objects out of 1000 (max. 8388607)
+ 102 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 500000)
+ 93 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,5 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*
+
 from flask import Flask, render_template, request, session, redirect, url_for
 from form2db import *
+from inconsistence_check import *
 
 app = Flask(__name__)
 
@@ -44,10 +48,29 @@ def consulta_result():
 @app.route('/consulta_result/update', methods=['POST'])
 def update():
 
+    #zerando lixo de update anterior
+    globalSession['update'] = []
 
+    elemento_atual = request.form['serial-id']
+
+
+    for header in globalValues['Header']:
+        if request.form[header] != '':
+            globalSession['update'].append({'campo': header, 'valor': request.form[header]})
+
+    #instanciando inconsistente check
+    ict = Inconsistence_check()
+    #checando inconsistencias d formatação
+    globalSession['update'] = ict.orquestrator(globalSession['update'])
+
+    #teste identificador unico
+    #print elemento_atual
+
+    #teste globalSession
+    for teste_print in globalSession['update']:
+        print teste_print
 
     return render_template('consulta_result.html', globalSession=globalSession, globalValues=globalValues)
-
 
 
 #RESET ------------------------------------------------------------------------------------------------------

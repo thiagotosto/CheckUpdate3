@@ -7,12 +7,11 @@ Inconsistence Check:
 - Serial: upper;
 - Fabricante: upper; js.opções_particulares(DELL, HP);
 - Modelo: capitalize_blocos;
-- Localização: js.opções_particulares(Sala de equipamentos, HPA, Sala de equipamentos SP);
 - Rack: js.numero
 - Patrimonio: js.numero
 - Hostname: lower;
-- IP: js.ip_type;
-- Em Uso?: js.opções_particulares(S, N);
+- IP: ip_type;
+- Em Uso?: opções_particulares(S, N);
 - Said: js.numero
 - Contrato: upper; js.opções_particulares(GLOBOSATRJ*, GLOBOSATSP*);
 - Start Date: js.data

@@ -39,6 +39,13 @@ function set_placeholder(value) {
 
 
 //CONSULTA RESULT
+
+//update orquestrador
+function update_orquestrador(value) {
+    set_modal_title(value);
+    change_hidden_input_consres(value);
+}
+
 //muda titulo do modal
 function set_modal_title(value) {
   //alert(value)
@@ -54,6 +61,10 @@ function set_modal_title(value) {
   //console.log(value.)
   //alert({{ object.serial }})
   document.getElementById('modal-title').innerHTML = value;
+}
+
+function change_hidden_input_consres(value) {
+  document.getElementById('serial-id').value = value
 }
 
 
