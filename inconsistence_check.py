@@ -10,23 +10,23 @@ class Inconsistence_check():
         self.normas = {}
 
         self.normas['Nome'] = 'upper'
-        #self.normas['Baia'] =
+        self.normas['Baia'] = ''
         self.normas['Categoria'] = 'lower'
         self.normas['Resp'] = 'capt'
         self.normas['Serial'] = 'upper'
         self.normas['Fabricante'] = 'upper'
         self.normas['Modelo'] = 'capt'
-        #self.normas['Localizacao '] =
-        #self.normas['Rack'] =
-        #self.normas['Patrimonio'] =
+        self.normas['Localizacao'] = ''
+        self.normas['Rack'] = ''
+        self.normas['Patrimonio'] = ''
         self.normas['Hostname'] = 'lower'
-        #self.normas['Ip'] =
-        #self.normas['Em_uso'] =
-        #self.normas['Said'] =
+        self.normas['Ip'] = ''
+        self.normas['Em_uso'] = ''
+        self.normas['Said'] = ''
         self.normas['Contrato'] = 'upper'
-        #self.normas['Start_date'] =
-        #self.normas['End_date'] =
-        #self.normas['Legado'] =
+        self.normas['Start_date'] = ''
+        self.normas['End_date'] = ''
+        self.normas['Legado'] = 'upper'
 
     #METODOS DE CONTROLE
 
@@ -57,6 +57,8 @@ class Inconsistence_check():
         if regra == 'capt':
             return self._capitalize(arg)
 
+        return arg
+
 
     #METODOS DE APLICAÇÃO DE REGRAS
 
@@ -70,7 +72,3 @@ class Inconsistence_check():
 
     def _capitalize(self, string):
         return str_class.capwords(string)
-
-
-ict = Inconsistence_check()
-print ict.orquestrator([{'campo': 'Modelo', 'valor': 'TeStE'},{'campo': 'Resp', 'valor': 'TeStE'}, {'campo': 'Fabricante', 'valor': 'TeStE'}])
