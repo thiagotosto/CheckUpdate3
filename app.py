@@ -34,7 +34,7 @@ def consulta():
 @app.route('/consulta_result/')
 def consulta_result():
 
-    bind = binder(globalSession['consulta'])
+    bind = binder(globalSession['consulta'], 'c')
     globalSession['consulta_result'] = form2db_consulta(bind)
 
     #teste de json dump
@@ -51,24 +51,31 @@ def update():
     #zerando lixo de update anterior
     globalSession['update'] = []
 
+    #pegando serial do elemento atual
     elemento_atual = request.form['serial-id']
 
-
+    #populando update
     for header in globalValues['Header']:
         if request.form[header] != '':
             globalSession['update'].append({'campo': header, 'valor': request.form[header]})
 
     #instanciando inconsistente check
     ict = Inconsistence_check()
+
     #checando inconsistencias d formatação
     globalSession['update'] = ict.orquestrator(globalSession['update'])
+
+    index = binder(globalSession['update'], 'u')
+    form2db_update(elemento_atual, globalSession['update'], index)
 
     #teste identificador unico
     #print elemento_atual
 
+    '''
     #teste globalSession
     for teste_print in globalSession['update']:
         print teste_print
+    '''
 
     return render_template('consulta_result.html', globalSession=globalSession, globalValues=globalValues)
 
