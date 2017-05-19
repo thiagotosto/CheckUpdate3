@@ -14,11 +14,22 @@ body {
 }
 
 
-#submit {
+.submit {
   margin-top: 10px;
   left: 50%;
-  margin-left: -42px;
   position: absolute;
+}
+
+#submit {
+  margin-left: -57px;
+}
+
+#submit-insert {
+  margin-left: -40px;
+}
+
+#add {
+  margin-left: 50px;
 }
 
 .painel-custom {
@@ -34,6 +45,14 @@ body {
   overflow-x: scroll;
   margin-left: auto;
   margin-right: auto;
+}
+
+.painel-insert {
+  margin-top: 10px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 470px;
 }
 
 .hidden {
@@ -59,4 +78,18 @@ body {
 
 .form-update .input-group {
   margin-top: 2px;
+}
+
+
+.form-insert .input-group {
+  margin-top: 4px;
+}
+
+.form-insert {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
 }

@@ -1,8 +1,13 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*
 from dbconnect import *
 
-
+#CONSULTA
 def form2db_consulta(query):    # Recebe como parametro uma lista de dicionario com campo e valor das clausulas
-                                #e retorna uma lista com objetos do modelo do banco.
+    #instanciando sessão        #e retorna uma lista com objetos do modelo do banco.
+
+    #session = Session()
+
     filters = []
     q = session.query(Inventario)
 
@@ -14,17 +19,23 @@ def form2db_consulta(query):    # Recebe como parametro uma lista de dicionario 
 
     return result
 
+#UPDATE
 def form2db_update(target, value, indexes):
+    #instanciando Sessão
+    #session = Session()
+
     q = session.query(Inventario)
     print '\n\nForm2db update:\n\n'
     #for objeto in query:
         #filters.append(objeto['campo'] == objeto['valor'])
         #filters.append(objeto)
 
-    #print "target: ",target,",\tvalue: ",value,",\tindexes: ", indexes
+    print "target: ",target,",\tvalue: ",value,",\tindexes: ", indexes
 
+    print "\n elemento:\t"
     #instancia elemento alvo
     elemento = q.filter(Inventario.serial == target).first()
+    print "\n"
 
     #print "\n\nelemento: ", elemento, "elemento.serial: ", elemento.serial, "elemento.atributos[4]: ", elemento.atributos[4], "\n\n"
     #print "\n\nColunas\t", Inventario.__table__.columns, "\n\n"
@@ -35,10 +46,32 @@ def form2db_update(target, value, indexes):
         #elemento.em_uso = value[i]['valor']
         setattr(elemento, indexes[i], value[i]['valor'])
 
-    q.session.commit()
+    print "\n\nq: ", q, "\n"
+
+    session.commit()
 
     #return result
 
+#INSERT
+def form2db_insert(campos, atributos):
+    #instanciando sessão
+
+    #session.expire_all()
+    #session = Session()
+
+    #instanciando seção
+    q = session.query(Inventario)
+
+    #instanciando objeto do banco
+    new = Inventario()
+
+    print "\n\nAtributos: \n\n", atributos, "Campos: ", campos
+
+    for i in range(len(atributos)):
+        setattr(new, campos[i], atributos[i]['valor'])
+
+    session.add(new)
+    session.commit()
 
 def binder(to_bind, flag):    #recebe como parametro um tupla de dicionarios que representam as clausulas
     query = []
@@ -74,7 +107,7 @@ def binder(to_bind, flag):    #recebe como parametro um tupla de dicionarios que
                 query.append(Inventario.ip.op('regexp')('.*%s.*' % objeto['valor']))
             if objeto['campo'] == 'Em uso?':
                 query.append(Inventario.em_uso.op('regexp')('.*%s.*' % objeto['valor']))
-            if objeto['campo'] == 'Said':
+            if objeto['campo'] == 'SAID':
                 query.append(Inventario.said.op('regexp')('.*%s.*' % objeto['valor']))
             if objeto['campo'] == 'Contrato':
                 query.append(Inventario.contrato.op('regexp')('.*%s.*' % objeto['valor']))
@@ -126,7 +159,7 @@ def binder(to_bind, flag):    #recebe como parametro um tupla de dicionarios que
             if objeto['campo'] == 'Em uso?':
                 #query.append(Inventario.em_uso == objeto['valor'])
                 query.append('em_uso')
-            if objeto['campo'] == 'Said':
+            if objeto['campo'] == 'SAID':
                 #query.append(Inventario.said == objeto['valor'])
                 query.append('said')
             if objeto['campo'] == 'Contrato':

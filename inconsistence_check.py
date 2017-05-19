@@ -22,7 +22,7 @@ class Inconsistence_check():
         self.normas['Hostname'] = 'lower'
         self.normas['Ip'] = ''
         self.normas['Em uso?'] = 'upper'
-        self.normas['Said'] = ''
+        self.normas['SAID'] = ''
         self.normas['Contrato'] = 'upper'
         self.normas['Start_date'] = ''
         self.normas['End_date'] = ''

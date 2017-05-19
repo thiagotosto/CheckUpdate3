@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+  <div class="starter-template">
+    <h1>Adicionar equipamento</h1>
+    <p class="lead"></p>
+  </div>
+
+  <div class="row">
+    <form name="insert" method="post" action="{{ url_for('insert_result') }}">
+      <!--<div class="panel panel-default painel-insert">
+        <div class="panel-heading">Adicionar equipamento</div>-->
+
+        <div class="form-insert">
+          <div class="row">
+
+            <!--<input type="text" class="required form-control hidden" required id="serial-id" name="serial-id"></input>-->
+            <div class="col-xs-6">
+              {% for i in range(9) %}
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">{{ globalValues['Header'][i] }}</span>
+                  <input type="text" class="form-control" placeholder="" name="{{ globalValues['Header'][i] }}" aria-describedby="basic-addon1">
+                </div>
+              {% endfor %}
+            </div>
+            <div class="col-xs-6">
+              {% for i in range(9) %}
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">{{ globalValues['Header'][i + 9] }}</span>
+                  <input type="text" class="form-control" placeholder="" name="{{ globalValues['Header'][i + 9] }}" aria-describedby="basic-addon1">
+                </div>
+              {% endfor %}
+            </div>
+          </div> <!-- row formulario -->
+
+          <!-- BOTÃO SUBMIT -->
+          <div class="row">
+            <div class="col-xs-12">
+              <button type="submit" class="btn btn-primary submit" id="submit-insert" aria-label="Left Align">Submit</button>
+            </div>
+          </div>
+
+        </div>
+
+      <!--</div>-->
+    </form>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='./styles/homepage.js') }}"></script>
+{% endblock %}
+
+
+
+
+
+
+<!-- Trigger the modal with a button -->
+
+
+
+
+
+
+
+
+<!-- -------------------------------------------------------------- LIXO --------------------------------------------------------------------- -->

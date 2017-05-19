@@ -81,10 +81,13 @@
 
   <div class="row">
     <form action="{{ url_for('consulta_result') }}">
-      <button type="submit" class="btn btn-primary" id="submit" aria-label="Left Align">{% if not globalSession['consulta'] %}Mostrar tudo{% else %}Consultar{% endif %}</button>
+      <button type="submit" class="btn btn-primary submit" id="submit" aria-label="Left Align">{% if not globalSession['consulta'] %}Mostrar tudo{% else %}Consultar{% endif %}</button>
     </form>
   </div>
 
+  <form action="{{ url_for('insert') }}">
+    <button class="btn btn-primary submit" type="submit" id="add" aria-label="Left Align"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+  </form>
 
 </div><!-- /.container -->
 <script src="{{ url_for('static', filename='./styles/homepage.js') }}"></script>
