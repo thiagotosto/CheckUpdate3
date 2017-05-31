@@ -35,7 +35,8 @@
           <td>{% if object.start_date  != None %}{{ object.start_date }} {% endif %}</td>
           <td>{% if object.end_date  != None %}{{ object.end_date }} {% endif %}</td>
           <td>{% if object.leg_prod != None %}{{ object.leg_prod.decode('cp1252') }} {% endif %}</td>
-          <td><a class="link-geral" data-toggle="modal" data-target="#myModal" onclick="update_orquestrador('{{ object.serial.decode('cp1252') }}');"><span class="glyphicon glyphicon-edit"></a></td>
+          <td><a class="link-geral" data-toggle="modal" data-target="#updateModal" onclick="update_orquestrador('{{ object.serial.decode('cp1252') }}');"><span class="glyphicon glyphicon-edit"></a></td>
+          <td><a class="link-geral" data-toggle="modal" data-target="#removeModal" onclick="remove_orquestrador('{{ object.serial.decode('cp1252') }}');"><span class="glyphicon glyphicon-remove"></a></td>
         </tr>
       {% endfor %}
       </tbody>
@@ -45,22 +46,21 @@
 </div>
 
 
-<!-- Modal de update -->
-<div id="myModal" class="modal fade" role="dialog">
-  <form name="edicao" method="post" action="{{ url_for('update') }}">
+<form name="edicao" method="post" action="{{ url_for('update') }}" onsubmit="return validateUpdate()">
+  <!-- Modal de update -->
+  <div id="updateModal" class="modal fade" role="dialog">
+
     <div class="modal-dialog">
 
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" id="modal-title">Editando</h4>
+          <h4 class="modal-title" id="modal-title-update">Editando</h4>
         </div>
 
-        <div class="form-update">
+        <div class="form-modal">
           <div class="row">
-
-            <input type="text" class="required form-control hidden" required id="serial-id" name="serial-id"></input>
 
             {% for i in globalValues['Header'] %}
               <div class="input-group">
@@ -82,8 +82,47 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     </div>
 
-  </form>
-</div> <!-- end modal -->
+  </div> <!-- end modal -->
+  <input type="text" class="required form-control hidden serial" required  id="serial-id-update" name="serial-id-update"></input>
+</form>
+
+
+<!-- REMOVE -->
+<form name="remove" method="post" action="{{ url_for('remove') }}" onsubmit="return validateRemove()">
+  <!-- Modal de remove -->
+  <div id="removeModal" class="modal fade" role="dialog">
+
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="modal-title-remove">Remover</h4>
+        </div>
+
+        <div class="form-modal">
+          <div class="row">
+
+
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Digite o serial</span>
+                <input type="text" class="form-control" placeholder="" name="serial-confirmation" aria-describedby="basic-addon1">
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+          <button type="submit" class="btn btn-primary submit" id="submit" aria-label="Left Align">Remover</button>
+        </div>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+
+  </div> <!-- end modal -->
+   <input type="text" class="required form-control hidden serial" required id="serial-id-remove" name="serial-id-remove"></input>
+</form>
 
 
 

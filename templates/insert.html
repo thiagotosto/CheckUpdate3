@@ -9,7 +9,7 @@
   </div>
 
   <div class="row">
-    <form name="insert" method="post" action="{{ url_for('insert_result') }}">
+    <form name="insert" method="post" action="{{ url_for('insert_result') }}" onsubmit="return validateInsert()">
       <!--<div class="panel panel-default painel-insert">
         <div class="panel-heading">Adicionar equipamento</div>-->
 

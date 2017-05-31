@@ -67,7 +67,7 @@ body {
     color: #9d9d9d;
 }
 
-.form-update {
+.form-modal {
   max-width: 70%;
   margin-left: auto;
   margin-right: auto;
@@ -76,7 +76,7 @@ body {
   position: relative;
 }
 
-.form-update .input-group {
+.form-modal .input-group {
   margin-top: 2px;
 }
 
@@ -92,4 +92,21 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
   position: relative;
+}
+
+/*
+.logo {
+  width: 273px;
+  height: 30px;
+}*/
+
+.container {
+  position: relative;
+}
+
+.logo {
+  right: 0px;
+  position: absolute;
+  margin-top: 10px;
+  margin-right: 14px;
 }

@@ -73,6 +73,24 @@ def form2db_insert(campos, atributos):
     session.add(new)
     session.commit()
 
+
+#UPDATE
+def form2db_remove(target):
+    #instanciando Sessão
+    #session = Session()
+
+    q = session.query(Inventario)
+
+    #instancia elemento alvo
+    elemento = q.filter(Inventario.serial == target).first()
+
+    q.session.delete(elemento)
+
+    session.commit()
+
+
+
+
 def binder(to_bind, flag):    #recebe como parametro um tupla de dicionarios que representam as clausulas
     query = []
 

@@ -9,7 +9,7 @@
     <p class="lead"></p>
   </div>
 
-  <form name="clausula" method="post" action="{{ url_for('consulta') }}">
+  <form name="clausula" method="post" action="{{ url_for('consulta') }}" onsubmit="return validateConsulta()">
     <div class="form-consulta">
       <div class="row">
         <div class="input-group">
@@ -50,6 +50,8 @@
   <!-- Tabela de clausulas de consulta -->
   {% if globalSession['consulta'] %}
 
+  <!--<script type="text/javascript" src="{{ url_for('static', filename='./styles/homepage.js') }}">set_buttons_place()</script>-->
+
   <div class="row">
     <div class="panel panel-default painel-custom">
       <div class="panel-heading">Cláusulas</div>
@@ -88,6 +90,13 @@
   <form action="{{ url_for('insert') }}">
     <button class="btn btn-primary submit" type="submit" id="add" aria-label="Left Align"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
   </form>
+
+    {% if globalSession['consulta'] %}
+      <script>
+        document.getElementById('submit').style.marginLeft = "-47px";
+        document.getElementById('add').style.marginLeft = "40px";
+      </script>
+    {% endif %}
 
 </div><!-- /.container -->
 <script src="{{ url_for('static', filename='./styles/homepage.js') }}"></script>

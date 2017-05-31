@@ -20,7 +20,7 @@ class Inconsistence_check():
         self.normas['Rack'] = ''
         self.normas['Patrimonio'] = ''
         self.normas['Hostname'] = 'lower'
-        self.normas['Ip'] = ''
+        self.normas['IP'] = ''
         self.normas['Em uso?'] = 'upper'
         self.normas['SAID'] = ''
         self.normas['Contrato'] = 'upper'

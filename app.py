@@ -61,7 +61,7 @@ def update():
     globalSession['update'] = []
 
     #pegando serial do elemento atual
-    elemento_atual = request.form['serial-id']
+    elemento_atual = request.form['serial-id-update']
 
     #populando update
     for header in globalValues['Header']:
@@ -121,6 +121,18 @@ def insert_result():
 
     return render_template('insert.html', globalValues=globalValues)
 
+
+#REMOVE -----------------------------------------------------------------------------------------------------
+@app.route('/remove/',  methods=['POST'])
+def remove():
+
+    #pegando serial do elemento atual
+    elemento_atual = request.form['serial-id-remove']
+
+    #index = binder(elemento_atual, 'd')
+    form2db_remove(elemento_atual)
+
+    return render_template('consulta_result.html', globalSession=globalSession, globalValues=globalValues)
 
 #RESET ------------------------------------------------------------------------------------------------------
 
