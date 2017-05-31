@@ -12,6 +12,7 @@ Welcome to CheckUpdate3's documentation!
    intro
    tecnologias
    classes
-   funcionalidades
+   objetos
    fluxo
+   funcionalidades
 

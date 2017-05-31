@@ -40,7 +40,7 @@
 
 
 \title{CheckUpdate3 Documentation}
-\date{abr 03, 2017}
+\date{mai 04, 2017}
 \release{}
 \author{Thiago Tosto}
 \newcommand{\sphinxlogo}{}
@@ -77,12 +77,29 @@ Flask
 \end{itemize}
 
 
+\section{Bibliotecas adicionais}
+\label{\detokenize{tecnologias:bibliotecas-adicionais}}\begin{itemize}
+\item {} 
+re (expressões regulares)
+
+\end{itemize}
+
+
 \chapter{Módulos}
-\label{\detokenize{classes:modulos}}\label{\detokenize{classes::doc}}
+\label{\detokenize{classes:modulos}}\label{\detokenize{classes::doc}}\begin{itemize}
+\item {} 
 inconsistent\_check: checa inconsistencia antes de persistencia no banco.
+
+\item {} 
 dbconnect: classe de conexão no banco.
+
+\item {} 
 form2db: tradutor do formulário para o banco.
+
+\item {} 
 app.py: criadores de rotas do flask.
+
+\end{itemize}
 
 
 \section{App.py}
@@ -101,22 +118,31 @@ adiciona:
 \end{itemize}
 
 
-\chapter{Funcionalidades}
-\label{\detokenize{funcionalidades:funcionalidades}}\label{\detokenize{funcionalidades::doc}}\begin{itemize}
+\chapter{Objetos}
+\label{\detokenize{objetos::doc}}\label{\detokenize{objetos:objetos}}
+
+\section{Variaveis Globais}
+\label{\detokenize{objetos:variaveis-globais}}\begin{itemize}
+\item {} \begin{description}
+\item[{globalSession: lista com todos objetos que estão associados a sessão do usuário.}] \leavevmode\begin{itemize}
 \item {} 
-Cadastro de servidor
+globalSession{[}'consulta'{]}: lista de dicionários que carregam as clausulas de consulta.
 
 \item {} 
-Edição de servidor
+globalSession{[}'update'{]}: lista de dicionários que carregam os dados a serem a atualizados.
 
-\item {} 
-Busca de servidor
+\end{itemize}
 
-\item {} 
-Importação de Planilha
+\end{description}
 
+\item {} \begin{description}
+\item[{globalValues: lista com todos as constantes globais ao sistema.}] \leavevmode\begin{itemize}
 \item {} 
-Exportação para Planilha
+globalValues{[}'Header'{]}: lista com todos os headers da tabela de inventário.
+
+\end{itemize}
+
+\end{description}
 
 \end{itemize}
 
@@ -126,13 +152,13 @@ Exportação para Planilha
 \item {} \begin{description}
 \item[{Página home:}] \leavevmode\begin{itemize}
 \item {} 
-Consulta -\textgreater{} Query no banco -\textgreater{} apresenta consulta front end (extende: Editar)
+Consulta: frontend -\textgreater{} tradutor da query -\textgreater{} query no banco -\textgreater{} apresenta consulta front end (extende: Editar)
 
 \item {} 
-Editar -\textgreater{} Carrega as mudanças -\textgreater{} Submit mudanças -\textgreater{} Checa inconsistencias -\textgreater{} Persiste no banco.
+Editar: frontend -\textgreater{} carrega as mudanças -\textgreater{} submit mudanças -\textgreater{} checa inconsistencias -\textgreater{} persiste no banco -\textgreater{} apresenta resultado.
 
 \item {} 
-Adciona -\textgreater{} Carrega valores -\textgreater{} Submit mudanças -\textgreater{} Checa inconsistências -\textgreater{} Periste no banco.
+Adciona: frontend -\textgreater{} carrega valores -\textgreater{} submit mudanças -\textgreater{} checa inconsistências -\textgreater{} persiste no banco.
 
 \item {} 
 \sphinxstyleemphasis{Importar -\textgreater{} Versão 2.0}
@@ -143,6 +169,26 @@ Adciona -\textgreater{} Carrega valores -\textgreater{} Submit mudanças -\textg
 \end{itemize}
 
 \end{description}
+
+\end{itemize}
+
+
+\chapter{Funcionalidades}
+\label{\detokenize{funcionalidades:funcionalidades}}\label{\detokenize{funcionalidades::doc}}\begin{itemize}
+\item {} 
+Cadastro de equipamento
+
+\item {} 
+Edição de equipamento
+
+\item {} 
+Busca de equipamento
+
+\item {} 
+Importação de Planilha
+
+\item {} 
+Exportação para Planilha
 
 \end{itemize}
 

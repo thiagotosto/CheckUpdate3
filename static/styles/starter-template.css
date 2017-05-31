@@ -14,11 +14,22 @@ body {
 }
 
 
-#submit {
+.submit {
   margin-top: 10px;
   left: 50%;
-  margin-left: -42px;
   position: absolute;
+}
+
+#submit {
+  margin-left: -57px;
+}
+
+#submit-insert {
+  margin-left: -40px;
+}
+
+#add {
+  margin-left: 50px;
 }
 
 .painel-custom {
@@ -36,6 +47,66 @@ body {
   margin-right: auto;
 }
 
+.painel-insert {
+  margin-top: 10px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 470px;
+}
+
 .hidden {
   display: none;
+}
+
+.link-geral {
+  color: #222;
+}
+
+.link-geral:hover {
+    color: #9d9d9d;
+}
+
+.form-modal {
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.form-modal .input-group {
+  margin-top: 2px;
+}
+
+
+.form-insert .input-group {
+  margin-top: 4px;
+}
+
+.form-insert {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+/*
+.logo {
+  width: 273px;
+  height: 30px;
+}*/
+
+.container {
+  position: relative;
+}
+
+.logo {
+  right: 0px;
+  position: absolute;
+  margin-top: 10px;
+  margin-right: 14px;
 }
