@@ -15,7 +15,7 @@ globalSession['consulta'] = []      #inicializando variavel global de Consulta
 globalSession['update'] = []        #inicializando variavel global de Update
 globalSession['insert'] = []        #inicializando variavel global de Insert
 globalValues = dict()
-globalValues['Header'] = ['Nome','Baia','Categoria','Resp','Serial','Fabricante','Modelo','Localizacao','Rack','Patrimonio','Hostname','IP','Em uso?','SAID','Contrato(FL)','Start Date','End Date','Legado']
+globalValues['Header'] = ['Nome','Baia','Categoria','Resp','Serial','Fabricante','Modelo','Localizacao','Rack', 'Posicao','Patrimonio','Hostname','IP','Em uso?','SAID','Contrato','Start Date','End Date','Legado']
 
 
 @app.route('/')
@@ -98,13 +98,25 @@ def insert():
 @app.route('/insert_result/', methods=['POST'])
 def insert_result():
 
+    print "Passei aqui!!!"
+
     #zerando lixo de insert anterior
     globalSession['insert'] = []
+
+    #TESTE!!!
+    print "Headers", globalValues['Header']
+
 
     #populando insert
     for header in globalValues['Header']:
         if request.form[header] != '':
+            print "\ncampo: ", header, "\tvalor: ", request.form[header]
             globalSession['insert'].append({'campo': header, 'valor': request.form[header]})
+            print "passei dentro do for depois do append"
+
+
+    print "passei aqui depois do for"
+    print "insert: ", globalSession['insert']
 
     #instanciando inconsistente check
     ict = Inconsistence_check()

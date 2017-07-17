@@ -18,6 +18,7 @@ class Inconsistence_check():
         self.normas['Modelo'] = 'capt'
         self.normas['Localizacao'] = ''
         self.normas['Rack'] = ''
+        self.normas['Posicao'] = ''
         self.normas['Patrimonio'] = ''
         self.normas['Hostname'] = 'lower'
         self.normas['IP'] = ''

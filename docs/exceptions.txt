@@ -1,0 +1,6 @@
+Exceptions a serem capturadas:
+
+Tentar deletar objeto ja deletado: sqlalchemy.orm.exc.UnmappedInstanceError
+    - mapeado: remove(); 
+
+

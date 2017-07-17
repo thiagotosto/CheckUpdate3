@@ -17,6 +17,8 @@ def form2db_consulta(query):    # Recebe como parametro uma lista de dicionario 
         filters.append(objeto)
     result = q.filter(*filters).all()
 
+    session.commit()
+
     return result
 
 #UPDATE
@@ -135,6 +137,9 @@ def binder(to_bind, flag):    #recebe como parametro um tupla de dicionarios que
                 query.append(Inventario.end_date.op('regexp')('.*%s.*' % objeto['valor']))
             if objeto['campo'] == 'Legado':
                 query.append(Inventario.legado.op('regexp')('.*%s.*' % objeto['valor']))
+            if objeto['campo'] == 'Posicao':
+                query.append(Inventario.legado.op('regexp')('.*%s.*' % objeto['valor']))
+
         #UPDATE
     elif flag == 'u' or flag == 'update':
         for objeto in to_bind:
@@ -192,6 +197,9 @@ def binder(to_bind, flag):    #recebe como parametro um tupla de dicionarios que
             if objeto['campo'] == 'Legado':
                 #query.append(Inventario.legado == objeto['valor'])
                 query.append('legado')
+            if objeto['campo'] == 'Posicao':
+                #query.append(Inventario.legado == objeto['valor'])
+                query.append('posicao')
 
         print "QUERY:", query," \n\n\n"
 

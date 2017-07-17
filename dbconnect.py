@@ -30,7 +30,8 @@ class Inventario(Base):
     start_date = Column(Date)
     end_date = Column(Date)
     leg_prod = Column(String)
+    posicao = Column(Integer)
 
     atributos = [nome, baia, categoria, resp, serial, fabricante, modelo, localizacao,
-                rack, patrimonio, hostname, ip, em_uso, said, contrato, start_date, end_date,
-                leg_prod ]
+                rack, posicao, patrimonio, hostname, ip, em_uso, said, contrato, start_date, end_date,
+                leg_prod]

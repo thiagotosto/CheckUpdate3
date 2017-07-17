@@ -25,7 +25,8 @@
           <td>{% if object.fabricante != None %}{{ object.fabricante.decode('cp1252') }} {% endif %}</td>
           <td>{% if object.modelo != None %}{{ object.modelo.decode('cp1252') }} {% endif %}</td>
           <td>{% if object.localizacao != None %}{{ object.localizacao.decode('cp1252') }} {% endif %}</td>
-          <td>{% if object.rack  != None %}{{ object.rack }} {% endif %}</td>
+          <td>{% if object.rack != None %}{{ object.rack }} {% endif %}</td>
+          <td>{% if object.posicao != None %}{{ object.posicao }} {% endif %}</td>
           <td>{% if object.patrimonio  != None %}{{ object.patrimonio }} {% endif %}</td>
           <td>{% if object.hostname != None %}{{ object.hostname.decode('cp1252') }} {% endif %}</td>
           <td>{% if object.ip != None %}{{ object.ip.decode('cp1252') }} {% endif %}</td>
