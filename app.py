@@ -4,6 +4,7 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from form2db import *
 from inconsistence_check import *
+from db2flask import *
 
 app = Flask(__name__)
 
@@ -14,6 +15,8 @@ globalSession = dict()
 globalSession['consulta'] = []      #inicializando variavel global de Consulta
 globalSession['update'] = []        #inicializando variavel global de Update
 globalSession['insert'] = []        #inicializando variavel global de Insert
+globalSession['insert'] = []        #inicializando variavel global de Insert
+globalSession['bayface_rack'] = []  #inicializando variavel global de Bayface
 globalValues = dict()
 globalValues['Header'] = ['Nome','Baia','Categoria','Resp','Serial','Fabricante','Modelo','Localizacao','Rack', 'Posicao','Patrimonio','Hostname','IP','Em uso?','SAID','Contrato','Start Date','End Date','Legado']
 
@@ -44,10 +47,16 @@ def consulta_result():
     bind = binder(globalSession['consulta'], 'c')
     globalSession['consulta_result'] = form2db_consulta(bind)
 
+    #print "\n\nCONSULTA_RESULT",globalSession['consulta_result'], "\n\n"
+    #print "\n\nDIDIONARIO: ", dbAsDict(globalSession['consulta_result']), "\n\n"
+    #print dbAsDict(globalSession['consulta_result'])
+
     #teste de json dump
     #teste = json.dumps(globalSession['consulta_result'])
+    asDict = dbAsDict(globalSession['consulta_result'])
+    print "\n\n", asDict, "\n\n"
 
-    return render_template('consulta_result.html', globalSession=globalSession, globalValues=globalValues)
+    return render_template('consulta_result.html', globalSession=globalSession, globalValues=globalValues, asDict=asDict)
 
 #UPDATE -----------------------------------------------------------------------------------------------------
 
@@ -55,7 +64,7 @@ def consulta_result():
 @app.route('/consulta_result/update', methods=['POST'])
 def update():
 
-    print "\n\nPASSEI NO UPDATE!!!\n\n"
+    #print "\n\nPASSEI NO UPDATE!!!\n\n"
 
     #zerando lixo de update anterior
     globalSession['update'] = []
@@ -98,25 +107,25 @@ def insert():
 @app.route('/insert_result/', methods=['POST'])
 def insert_result():
 
-    print "Passei aqui!!!"
+    #print "Passei aqui!!!"
 
     #zerando lixo de insert anterior
     globalSession['insert'] = []
 
     #TESTE!!!
-    print "Headers", globalValues['Header']
+    #print "Headers", globalValues['Header']
 
 
     #populando insert
     for header in globalValues['Header']:
         if request.form[header] != '':
-            print "\ncampo: ", header, "\tvalor: ", request.form[header]
+            #print "\ncampo: ", header, "\tvalor: ", request.form[header]
             globalSession['insert'].append({'campo': header, 'valor': request.form[header]})
-            print "passei dentro do for depois do append"
+            #print "passei dentro do for depois do append"
 
 
-    print "passei aqui depois do for"
-    print "insert: ", globalSession['insert']
+    #print "passei aqui depois do for"
+    #print "insert: ", globalSession['insert']
 
     #instanciando inconsistente check
     ict = Inconsistence_check()
@@ -133,6 +142,33 @@ def insert_result():
 
     return render_template('insert.html', globalValues=globalValues)
 
+#BAYFACE ----------------------------------------------------------------------------------------------------
+
+@app.route('/bayface/')
+def bayface(rack=63):
+
+    #print "\n\n\n", globalSession['bayface_rack']
+    #print "\n\n\nRACK: ", rack
+
+    bind = binder([{'campo': 'Rack', 'valor': rack}], 'c')
+    #print '\n\n\nbind: ', bind
+    globalSession['bayface_rack'] = form2db_consulta(bind)
+
+    #print "\n\n\n", globalSession['bayface_rack'], "\n\n\n"
+
+    #for server in globalSession['bayface_rack']:
+    #    parse_posicao(server)
+
+    #transformando lista de pbjetos em lista de dicionarios correspondentes
+    asDict = dbAsDict(globalSession['bayface_rack'])
+
+    #parseando o atributo posicao
+    for server in asDict:
+        parse_posicao(server)
+
+    print "\n\n\nasDict: ", asDict, "\n\n\n"
+
+    return render_template('bayface.html', globalSession=globalSession, rack=rack, asDict=asDict)
 
 #REMOVE -----------------------------------------------------------------------------------------------------
 @app.route('/remove/',  methods=['POST'])
@@ -144,7 +180,9 @@ def remove():
     #index = binder(elemento_atual, 'd')
     form2db_remove(elemento_atual)
 
-    return render_template('consulta_result.html', globalSession=globalSession, globalValues=globalValues)
+    asDict = dbAsDict(globalSession['consulta_result'])
+
+    return render_template('consulta_result.html', globalSession=globalSession, globalValues=globalValues, asDict=asDict)
 
 #RESET ------------------------------------------------------------------------------------------------------
 
@@ -161,5 +199,7 @@ def reset_session():
         for i in range(len(globalSession['consulta_result'])):
             globalSession['consulta_result'].pop(0)
 
+    for i in range(len(globalSession['bayface_rack'])):
+        globalSession['bayface_rack'].pop(0)
 
     return redirect(url_for('index'))

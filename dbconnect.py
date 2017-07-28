@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 
-engine = create_engine('mysql+pymysql://root:Oigul9Bluj1@localhost/checkupdate_db', echo=True)
+engine = create_engine('mysql+pymysql://root:Oigul9Bluj1@localhost/checkupdate_db', echo=True, pool_recycle=180)
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -30,7 +30,7 @@ class Inventario(Base):
     start_date = Column(Date)
     end_date = Column(Date)
     leg_prod = Column(String)
-    posicao = Column(Integer)
+    posicao = Column(String)
 
     atributos = [nome, baia, categoria, resp, serial, fabricante, modelo, localizacao,
                 rack, posicao, patrimonio, hostname, ip, em_uso, said, contrato, start_date, end_date,

@@ -155,6 +155,11 @@ function change_hidden_input_consres(value, flag) {
 }
 
 
+function teste_object(object){
+  console.log(object[0]['serial']);
+  console.log(object[0]['fabricante']);
+}
+
 /*
 function setObjectModal(object) {
   alert('Passei em setObjectModal')

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
+<body>
 
 <div class="container">
 
@@ -92,10 +92,15 @@
     <button class="btn btn-primary submit" type="submit" id="add" aria-label="Left Align"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
   </form>
 
+  <form action="{{ url_for('bayface') }}">
+    <button class="btn btn-primary submit" type="submit" id="bayface" aria-label="Left Align"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></button>
+  </form>
+
     {% if globalSession['consulta'] %}
       <script>
-        document.getElementById('submit').style.marginLeft = "-47px";
-        document.getElementById('add').style.marginLeft = "40px";
+        document.getElementById('submit').style.marginLeft = "-87px";
+        document.getElementById('add').style.marginLeft = "0px";
+        document.getElementById('bayface').style.marginLeft = "42px";
       </script>
     {% endif %}
 

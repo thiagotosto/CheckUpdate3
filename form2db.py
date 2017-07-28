@@ -204,3 +204,26 @@ def binder(to_bind, flag):    #recebe como parametro um tupla de dicionarios que
         print "QUERY:", query," \n\n\n"
 
     return query
+
+def parse_posicao(objeto):
+    objeto['posicao'] = objeto['posicao'].split('-')
+
+    if (len(objeto['posicao']) == 2):
+        objeto['posicao'][0] = int(objeto['posicao'][0])
+        objeto['posicao'][1] = int(objeto['posicao'][1])
+
+
+
+
+
+'''    if (type(objeto.posicao) == str):
+        print "\n\n\nSerial: ", objeto.serial
+        print "\nRack: ", objeto.rack
+        print "\nPosição", objeto.posicao,"\n\n\n"
+        #separando limites
+        objeto.posicao = objeto.posicao.split('-')
+
+        #fazendo typecast para inteiro
+        objeto.posicao[0] = int(objeto.posicao[0])
+        objeto.posicao[1] = int(objeto.posicao[1])
+'''

@@ -21,15 +21,19 @@ body {
 }
 
 #submit {
-  margin-left: -57px;
+  margin-left: -97px;
+}
+
+#bayface {
+  margin-left: 52px;
+}
+
+#add {
+  margin-left: 10px;
 }
 
 #submit-insert {
   margin-left: -40px;
-}
-
-#add {
-  margin-left: 50px;
 }
 
 .painel-custom {
@@ -109,4 +113,11 @@ body {
   position: absolute;
   margin-top: 10px;
   margin-right: 14px;
+}
+
+#canvas {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body onload='drawBases({{ rack }}, {{ asDict|tojson }});'>
+
+<div class="container">
+
+  <div class="starter-template">
+    <h1>Bayface</h1>
+    <p class="lead"></p>
+  </div>
+
+  <div class="row">
+    <div class=col-md-12>
+      <canvas id='canvas' width='400'></canvas>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='./styles/homepage.js') }}"></script>
+<script src="{{ url_for('static', filename='./styles/bayface.js') }}"></script>
+{% endblock %}
+
+
+
+
+
+
+<!-- Trigger the modal with a button -->
+
+
+
+
+
+
+
+
+<!-- -------------------------------------------------------------- LIXO --------------------------------------------------------------------- -->
