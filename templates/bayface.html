@@ -10,6 +10,15 @@
     <p class="lead"></p>
   </div>
 
+  <form method='post' name='rack_chooser' action="{{ url_for('bayface') }}">
+    <div id="rack_input" class="input-group">
+      <input type="number" class="form-control" name="rack_input" placeholder="Rack">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="submit">Consulta</button>
+      </span>
+    </div><!-- /input-group -->
+  </form>
+
   <div class="row">
     <div class=col-md-12>
       <canvas id='canvas' width='400'></canvas>

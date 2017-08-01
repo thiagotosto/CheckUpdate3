@@ -144,11 +144,21 @@ def insert_result():
 
 #BAYFACE ----------------------------------------------------------------------------------------------------
 
-@app.route('/bayface/')
-def bayface(rack=63):
+@app.route('/bayface/', methods=['GET','POST'])
+def bayface():
 
     #print "\n\n\n", globalSession['bayface_rack']
     #print "\n\n\nRACK: ", rack
+
+    #inicializando valor default de rack
+    rack = 22
+
+    print "\n\n\nRequest method: ", request.method, "\n\n\n"
+
+    #carregando numero do rack escolhido
+    if (request.method == 'POST'):
+        print "\n\n\nRequest form: ", request.form['rack_input'], "\n\n\n"
+        rack = request.form['rack_input']
 
     bind = binder([{'campo': 'Rack', 'valor': rack}], 'c')
     #print '\n\n\nbind: ', bind

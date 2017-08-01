@@ -1,19 +1,28 @@
 var xinitial = 50;
 var yinitial = 50;
-var slotAmount = 40;
+var slotAmount = 42;
 var slotHeigth = 20;
 var slotWidth = 120;
 var sideWidth = 20;
-
+var cor_dell = '#EEE9E9';
+var cor_hp = '#0096d6';
 
 function drawBases(rack, server) {
-  getCanvasHeight();
-  drawRack(rack);
-  drawLegend();
 
-  for (i = 0; i < server.length; i++){
-    console.log(server[i].posicao);
-    drawServer(server[i]);
+  if (server.length > 1) {
+    getCanvasHeight();
+    drawRack(rack);
+    drawLegend();
+
+    console.log(server);
+
+
+    for (i = 0; i < server.length; i++){
+      console.log(server[i].posicao);
+      if (server[i].posicao[0] > 0){
+        drawServer(server[i]);
+      }
+    }
   }
   //console.log(server);
   //console.log(server.length);
@@ -39,8 +48,8 @@ function drawLegend() {
    var yLegendInitial = yinitial + slotAmount*slotHeigth - 10;
 
    //desenhando indicativos
-   roundedRect(ctx,xLegendInitial,yinitial + slotAmount*slotHeigth - 10,10,10,2,'#222', '#EEE9E9');
-   roundedRect(ctx,xLegendInitial + 70,yinitial + slotAmount*slotHeigth - 10,10,10,2,'#222', '#0096d6');
+   roundedRect(ctx,xLegendInitial,yinitial + slotAmount*slotHeigth - 10,10,10,2,'#222', cor_dell);
+   roundedRect(ctx,xLegendInitial + 70,yinitial + slotAmount*slotHeigth - 10,10,10,2,'#222', cor_hp);
 
    //escrevendo legendas
    ctx.font = "13px Helvetica";
@@ -110,17 +119,20 @@ function drawServer(server) {
    }
 
 
-   console.log(server['serial']);
+   //console.log(server['serial']);
 
   //definindo cor pelo fabricante
    if (server['fabricante'] == 'DELL') {
-     ctx.fillStyle ='#EEE9E9';
+     ctx.fillStyle = cor_dell;
    } else if (server['fabricante'] == 'HP'){
-     ctx.fillStyle = '#0096d6';
+     ctx.fillStyle = cor_hp;
    }
 
   ctx.fillRect(xinitial, yinitial + (server['posicao'][0]-1)*slotHeigth, slotWidth, serverHeight*slotHeigth);
-  ctx.fillRect(50, 50*30, slotWidth, serverHeight*slotHeigth);
+  //desenhando contorno do servidor
+  ctx.strokeStyle = '#222';
+  ctx.strokeRect(xinitial, yinitial + (server['posicao'][0]-1)*slotHeigth, slotWidth, serverHeight*slotHeigth);
+  //ctx.fillRect(50, 50*30, slotWidth, serverHeight*slotHeigth);
 
 
 
@@ -170,8 +182,11 @@ function putInfo(server) {
 
   var xaddition = slotWidth/2 - server['serial'].length/2*8;
   ctx.fillStyle = '#222';
-  ctx.fillText(server['serial'], xinitial + xaddition, yinitial + (server['posicao'][0]-1)*slotHeigth + slotHeigth*serverHeight/2 + 12/2);
-
+  if ((server['hostname'] != 'None') && (server['hostname'] != ' ') && (server['hostname'] != '-')) {
+    ctx.fillText(server['hostname'], xinitial + xaddition, yinitial + (server['posicao'][0]-1)*slotHeigth + slotHeigth*serverHeight/2 + 12/2);
+  } else {
+    ctx.fillText(server['serial'], xinitial + xaddition, yinitial + (server['posicao'][0]-1)*slotHeigth + slotHeigth*serverHeight/2 + 12/2);
+  }
 
 
 }
