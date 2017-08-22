@@ -49,7 +49,7 @@
   </form>
 
   <!-- Tabela de clausulas de consulta -->
-  {% if globalSession['consulta'] %}
+  {% if session['consulta'] %}
 
   <!--<script type="text/javascript" src="{{ url_for('static', filename='./styles/homepage.js') }}">set_buttons_place()</script>-->
 
@@ -65,7 +65,7 @@
           </tr>
         </thead>
         <tbody>
-        {% for clausula in globalSession['consulta'] %}
+        {% for clausula in session['consulta'] %}
           <tr>
             <td>{{ clausula['campo'] }}</td>
             <td>{{ clausula['valor'] }}</td>
@@ -80,11 +80,11 @@
   {% endif %}
 
   <!--<p>Current: {{ session['current'] }}</p>-->
-  <!--<p>Consulta: {{ globalSession['consulta'] }}</p>-->
+  <!--<p>Consulta: {{ session['consulta'] }}</p>-->
 
   <div class="row">
     <form action="{{ url_for('consulta_result') }}">
-      <button type="submit" class="btn btn-primary submit" id="submit" aria-label="Left Align">{% if not globalSession['consulta'] %}Mostrar tudo{% else %}Consultar{% endif %}</button>
+      <button type="submit" class="btn btn-primary submit" id="submit" aria-label="Left Align">{% if not session['consulta'] %}Mostrar tudo{% else %}Consultar{% endif %}</button>
     </form>
   </div>
 
@@ -96,7 +96,7 @@
     <button class="btn btn-primary submit" type="submit" id="bayface" aria-label="Left Align"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></button>
   </form>
 
-    {% if globalSession['consulta'] %}
+    {% if session['consulta'] %}
       <script>
         document.getElementById('submit').style.marginLeft = "-87px";
         document.getElementById('add').style.marginLeft = "0px";

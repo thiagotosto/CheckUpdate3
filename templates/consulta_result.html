@@ -3,7 +3,7 @@
 
 <body {% if asDict %} onload='teste_object({{ asDict|tojson }})'{% endif %}>
 
-{% if globalSession['consulta_result'] %}
+{% if session['consulta_result'] %}
 
 <div class="row">
   <div class="panel panel-default painel-result">
@@ -17,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-      {% for object in globalSession['consulta_result'] %}
+      {% for object in session['consulta_result'] %}
         <tr>
           <td>{% if object.nome != None %}{{ object.nome.decode('cp1252') }} {% endif %}</td>
           <td>{% if object.baia  != None %}{{ object.baia }} {% endif %}</td>
@@ -196,7 +196,7 @@
         </div><!-- /input-group
 
         <!-- Tabela de clausulas de consulta
-        {% if globalSession['update'] %}
+        {% if session['update'] %}
 
         <div class="row">
           <div class="panel panel-default painel-custom">
@@ -210,7 +210,7 @@
                 </tr>
               </thead>
               <tbody>
-              {% for clausula in globalSession['update'] %}
+              {% for clausula in session['update'] %}
                 <tr>
                   <td>{{ clausula['campo'] }}</td>
                   <td>{{ clausula['valor'] }}</td>
