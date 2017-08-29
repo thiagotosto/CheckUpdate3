@@ -91,6 +91,12 @@ function validateInsert() {
 
   //alert(form['Em uso?'].value.toLowerCase())
 
+  //'Serial' check
+  if (form['Serial'].value == '') {
+      alert("Por favor insira um serial");
+      return false;
+  };
+
   //'Fabricante' check
   if ((form['Fabricante'].value.toLowerCase() != "dell") && (form['Fabricante'].value.toLowerCase() != "hp") && (form['Fabricante'].value.toLowerCase() != "cisco") && (form['Fabricante'].value.toLowerCase() != '')) {
       alert("O valor de 'Fabricante' deve ser 'DELL' ou 'HP' ou 'CISCO'");

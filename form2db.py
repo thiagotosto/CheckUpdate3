@@ -6,10 +6,14 @@ from dbconnect import *
 def form2db_consulta(query):    # Recebe como parametro uma lista de dicionario com campo e valor das clausulas
     #instanciando sessão        #e retorna uma lista com objetos do modelo do banco.
 
-    #session = Session()
+    #dbsession = dbSession()
+
+    print "\b\bPASSEI NO INICIO FORM2DB CONSULTA\b\b"
 
     filters = []
-    q = session.query(Inventario)
+    q = dbsession.query(Inventario)
+
+    print "\b\bPASSEI NO MEIO FORM2DB CONSULTA\b\b"
 
     for objeto in query:
         #filters.append(objeto['campo'] == objeto['valor'])
@@ -17,16 +21,20 @@ def form2db_consulta(query):    # Recebe como parametro uma lista de dicionario 
         filters.append(objeto)
     result = q.filter(*filters).all()
 
-    session.commit()
+    print "\n\nPASSEI NO FINAL FORM2DB CONSULTA\n\n"
+
+    dbsession.commit()
+
+    print "\n\nPASSEI NO POIS COMMIT FORM2DB CONSULTA\n\n"
 
     return result
 
 #UPDATE
 def form2db_update(target, value, indexes):
     #instanciando Sessão
-    #session = Session()
+    #dbsession = dbSession()
 
-    q = session.query(Inventario)
+    q = dbsession.query(Inventario)
     print '\n\nForm2db update:\n\n'
     #for objeto in query:
         #filters.append(objeto['campo'] == objeto['valor'])
@@ -50,7 +58,7 @@ def form2db_update(target, value, indexes):
 
     print "\n\nq: ", q, "\n"
 
-    session.commit()
+    dbsession.commit()
 
     #return result
 
@@ -58,11 +66,11 @@ def form2db_update(target, value, indexes):
 def form2db_insert(campos, atributos):
     #instanciando sessão
 
-    #session.expire_all()
-    #session = Session()
+    #dbsession.expire_all()
+    #dbsession = dbSession()
 
     #instanciando seção
-    q = session.query(Inventario)
+    q = dbsession.query(Inventario)
 
     #instanciando objeto do banco
     new = Inventario()
@@ -72,23 +80,23 @@ def form2db_insert(campos, atributos):
     for i in range(len(atributos)):
         setattr(new, campos[i], atributos[i]['valor'])
 
-    session.add(new)
-    session.commit()
+    dbsession.add(new)
+    dbsession.commit()
 
 
 #UPDATE
 def form2db_remove(target):
     #instanciando Sessão
-    #session = Session()
+    #dbsession = dbSession()
 
-    q = session.query(Inventario)
+    q = dbsession.query(Inventario)
 
     #instancia elemento alvo
     elemento = q.filter(Inventario.serial == target).first()
 
     q.session.delete(elemento)
 
-    session.commit()
+    dbsession.commit()
 
 
 

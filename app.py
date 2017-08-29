@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 app.secret_key = 'likujnyhtbgrvf67543'
 
-session = dict()
+#session = dict()
 #session['consulta'] = []      #inicializando variavel global de Consulta
 #session['update'] = []        #inicializando variavel global de Update
 #session['insert'] = []        #inicializando variavel global de Insert
@@ -36,6 +36,7 @@ def openSession():
 @app.route('/')
 def index():
 
+
     session['consulta'] = []      #inicializando variavel global de Consulta
     session['update'] = []        #inicializando variavel global de Update
     session['insert'] = []        #inicializando variavel global de Insert
@@ -54,7 +55,12 @@ def consulta():
     print '\n\nPASSEI NA CONSULTA!!!\n\n'
     print 'session keys: %s\n\n' % (session.keys())
 
-    session['consulta'].append({'campo': request.form['campo'], 'valor': request.form['valor']})
+    temp = session['consulta']
+
+    temp.append({'campo': request.form['campo'], 'valor': request.form['valor']})
+
+    session['consulta'] = temp
+    #session['consulta'].append({'campo': request.form['campo'], 'valor': request.form['valor']})
     print "session['consulta']: ", session['consulta']
 
     return render_template('index.html', session=session)
@@ -64,18 +70,21 @@ def consulta():
 def consulta_result():
 
     print '\n\nPASSEI NA CONSULTA_RESULT!!!\n\n'
+    print "session['consulta'] consulta result: ", session['consulta']
 
     bind = binder(session['consulta'], 'c')
-    session['consulta_result'] = form2db_consulta(bind)
+    session['consulta_result'] = dbAsDict(form2db_consulta(bind)) #form2db_consulta(bind)
 
+
+    print "\n\nPRINT consulta_result", session['consulta_result'], "\n\n"
     #print "\n\nCONSULTA_RESULT",session['consulta_result'], "\n\n"
     #print "\n\nDIDIONARIO: ", dbAsDict(session['consulta_result']), "\n\n"
     #print dbAsDict(session['consulta_result'])
 
     #teste de json dump
     #teste = json.dumps(session['consulta_result'])
-    asDict = dbAsDict(session['consulta_result'])
-    print "\n\n", asDict, "\n\n"
+    asDict = session['consulta_result']#dbAsDict(session['consulta_result'])
+    print "\n\nAsDict: ", asDict, "\n\n"
 
     return render_template('consulta_result.html', session=session, globalValues=globalValues, asDict=asDict)
 
@@ -116,8 +125,8 @@ def update():
         print teste_print
     '''
 
-    return render_template('consulta_result.html', session=session, globalValues=globalValues)
-
+    #return render_template('consulta_result.html', session=session, globalValues=globalValues)
+    return redirect(url_for('consulta_result'))
 
 #INSERT -----------------------------------------------------------------------------------------------------
 
@@ -183,7 +192,7 @@ def bayface():
 
     bind = binder([{'campo': 'Rack', 'valor': rack}], 'c')
     #print '\n\n\nbind: ', bind
-    session['bayface_rack'] = form2db_consulta(bind)
+    session['bayface_rack'] = dbAsDict(form2db_consulta(bind))
 
     #print "\n\n\n", session['bayface_rack'], "\n\n\n"
 
@@ -191,7 +200,7 @@ def bayface():
     #    parse_posicao(server)
 
     #transformando lista de pbjetos em lista de dicionarios correspondentes
-    asDict = dbAsDict(session['bayface_rack'])
+    asDict = session['bayface_rack']
 
     #parseando o atributo posicao
     for server in asDict:
@@ -211,9 +220,10 @@ def remove():
     #index = binder(elemento_atual, 'd')
     form2db_remove(elemento_atual)
 
-    asDict = dbAsDict(session['consulta_result'])
+    asDict = session['consulta_result']
 
-    return render_template('consulta_result.html', session=session, globalValues=globalValues, asDict=asDict)
+    return redirect(url_for('consulta_result'))
+    #return render_template('consulta_result.html', session=session, globalValues=globalValues, asDict=asDict)
 
 #RESET ------------------------------------------------------------------------------------------------------
 
