@@ -127,7 +127,6 @@ def bayface():
 
     #carregando numero do rack escolhido
     if (request.method == 'POST'):
-        print "\n\n\nRequest form: ", request.form['rack_input'], "\n\n\n"
         rack = request.form['rack_input']
 
     bind = binder([{'campo': 'Rack', 'valor': rack}], 'c')

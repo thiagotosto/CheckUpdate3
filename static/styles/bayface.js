@@ -10,7 +10,8 @@ var cor_cisco = '#FF8000';
 
 function drawBases(rack, server) {
 
-  if (server.length > 1) {
+  //se tiver servidor
+  if (server.length >= 1) {
     getCanvasHeight();
     drawRack(rack);
     drawLegend();
