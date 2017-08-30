@@ -4,7 +4,13 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 
-engine = create_engine('buh!', echo=True, pool_recycle=30)
+home = '/home/ttosto_estag/Thiago/Projetos/Globosat/CheckUpdate3/'
+
+with open(home + 'string_connection','r' ) as string:
+	string_connection = string.read()
+	
+
+engine = create_engine(string_connection, echo=True, pool_recycle=30)
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
 dbsession = Session()
