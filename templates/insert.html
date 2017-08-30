@@ -12,13 +12,10 @@
 
   <div class="row">
     <form name="insert" method="post" action="{{ url_for('insert_result') }}" onsubmit="return validateInsert()">
-      <!--<div class="panel panel-default painel-insert">
-        <div class="panel-heading">Adicionar equipamento</div>-->
 
         <div class="form-insert">
           <div class="row">
 
-            <!--<input type="text" class="required form-control hidden" required id="serial-id" name="serial-id"></input>-->
             <div class="col-xs-6">
               {% for i in range((globalValues['Header']|length/2)|int) %}
                 <div class="input-group">
@@ -46,26 +43,9 @@
 
         </div>
 
-      <!--</div>-->
     </form>
   </div>
 </div>
 
 <script src="{{ url_for('static', filename='./styles/homepage.js') }}"></script>
 {% endblock %}
-
-
-
-
-
-
-<!-- Trigger the modal with a button -->
-
-
-
-
-
-
-
-
-<!-- -------------------------------------------------------------- LIXO --------------------------------------------------------------------- -->

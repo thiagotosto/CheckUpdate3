@@ -1,2 +1,3 @@
 *.pyc
-string_connection
+.string_connection
+wsgi.py

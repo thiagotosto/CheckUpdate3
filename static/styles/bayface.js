@@ -24,13 +24,6 @@ function drawBases(rack, server) {
       }
     }
   }
-  //console.log(server);
-  //console.log(server.length);
-  //console.log(server[0]);
-  /*for (i = 0; i<server.length; i++){
-    console.log('Passei aqui');
-    drawServer(server[i]);
-  }*/
 }
 
 function getCanvasHeight() {
@@ -118,9 +111,6 @@ function drawServer(server) {
      var serverHeight = 1;
    }
 
-
-   //console.log(server['serial']);
-
   //definindo cor pelo fabricante
    if (server['fabricante'] == 'DELL') {
      ctx.fillStyle = cor_dell;
@@ -132,7 +122,6 @@ function drawServer(server) {
   //desenhando contorno do servidor
   ctx.strokeStyle = '#222';
   ctx.strokeRect(xinitial, yinitial + (server['posicao'][0]-1)*slotHeigth, slotWidth, serverHeight*slotHeigth);
-  //ctx.fillRect(50, 50*30, slotWidth, serverHeight*slotHeigth);
 
 
 
@@ -173,12 +162,6 @@ function putInfo(server) {
   }
 
   ctx.font = '13px Helvetica';
-
-  //console.log(server.serial);
-  //console.log(xinitial);
-  //console.log(yinitial);
-  //console.log(server.posicao);
-  //console.log(server.posicao);
 
   var xaddition = slotWidth/2 - server['serial'].length/2*8;
   ctx.fillStyle = '#222';

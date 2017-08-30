@@ -10,9 +10,3 @@ def index():
 def show_template(teste=None):
     return render_template('index.html', teste=teste)
 
-#@app.route('/user/', methods=['POST'])
-#def user_section():
-#    if request.form['Email']:
-#        return render_template('index.html', teste=request.form['Email'])
-#    else:
-#        return redirect(url_for('/'))

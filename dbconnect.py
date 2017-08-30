@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 
 home = '/home/ttosto_estag/Thiago/Projetos/Globosat/CheckUpdate3/'
 
-with open(home + 'string_connection','r' ) as string:
+with open(home + '.string_connection','r' ) as string:
 	string_connection = string.read()
 	
 

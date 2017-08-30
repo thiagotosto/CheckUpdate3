@@ -1,5 +1,3 @@
-#import base64
-
 def dbAsDict(object_list):
     result = []
     for obj in object_list:

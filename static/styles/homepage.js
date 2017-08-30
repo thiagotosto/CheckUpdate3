@@ -60,8 +60,6 @@ function set_buttons_place() {
 function validateUpdate() {
   var form = document.forms['edicao'];
 
-  //alert(form['Em uso?'].value)
-
   //'Fabricante' check
   if ((form['Fabricante'].value.toLowerCase() != "dell") && (form['Fabricante'].value.toLowerCase() != "hp") && (form['Fabricante'].value.toLowerCase() != "cisco") && (form['Fabricante'].value.toLowerCase() != '')) {
       alert("O valor de 'Fabricante' deve ser 'DELL' ou 'HP' ou 'CISCO'");
@@ -88,8 +86,6 @@ function validateUpdate() {
 
 function validateInsert() {
   var form = document.forms['insert'];
-
-  //alert(form['Em uso?'].value.toLowerCase())
 
   //'Serial' check
   if (form['Serial'].value == '') {
@@ -165,9 +161,3 @@ function teste_object(object){
   console.log(object[0]['serial']);
   console.log(object[0]['fabricante']);
 }
-
-/*
-function setObjectModal(object) {
-  alert('Passei em setObjectModal')
-  document.getElementById('modal-title').value = object.nome;
-}*/

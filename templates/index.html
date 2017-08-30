@@ -51,7 +51,6 @@
   <!-- Tabela de clausulas de consulta -->
   {% if session['consulta'] %}
 
-  <!--<script type="text/javascript" src="{{ url_for('static', filename='./styles/homepage.js') }}">set_buttons_place()</script>-->
 
   <div class="row">
     <div class="panel panel-default painel-custom">
@@ -79,8 +78,6 @@
 
   {% endif %}
 
-  <!--<p>Current: {{ session['current'] }}</p>-->
-  <!--<p>Consulta: {{ session['consulta'] }}</p>-->
 
   <div class="row">
     <form action="{{ url_for('consulta_result') }}">
