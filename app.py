@@ -51,9 +51,9 @@ def consulta():
 def consulta_result():
 
     bind = binder(session['consulta'], 'c')
-    session['consulta_result'] = dbAsDict(form2db_consulta(bind)) #form2db_consulta(bind)
+    session['consulta_result'] = dbAsDict(form2db_consulta(bind))
 
-    asDict = session['consulta_result']#dbAsDict(session['consulta_result'])
+    asDict = session['consulta_result']
     print "\n\nAsDict: ", asDict, "\n\n"
 
     return render_template('consulta_result.html', session=session, globalValues=globalValues, asDict=asDict)
@@ -84,7 +84,6 @@ def update():
     index = binder(session['update'], 'u')
     form2db_update(elemento_atual, session['update'], index)
 
-    #return render_template('consulta_result.html', session=session, globalValues=globalValues)
     return redirect(url_for('consulta_result'))
 
 #INSERT -----------------------------------------------------------------------------------------------------
@@ -128,6 +127,7 @@ def bayface():
 
     #carregando numero do rack escolhido
     if (request.method == 'POST'):
+        print "\n\n\nRequest form: ", request.form['rack_input'], "\n\n\n"
         rack = request.form['rack_input']
 
     bind = binder([{'campo': 'Rack', 'valor': rack}], 'c')

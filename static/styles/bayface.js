@@ -6,6 +6,7 @@ var slotWidth = 120;
 var sideWidth = 20;
 var cor_dell = '#EEE9E9';
 var cor_hp = '#0096d6';
+var cor_cisco = '#FF8000';
 
 function drawBases(rack, server) {
 
@@ -43,12 +44,14 @@ function drawLegend() {
    //desenhando indicativos
    roundedRect(ctx,xLegendInitial,yinitial + slotAmount*slotHeigth - 10,10,10,2,'#222', cor_dell);
    roundedRect(ctx,xLegendInitial + 70,yinitial + slotAmount*slotHeigth - 10,10,10,2,'#222', cor_hp);
+   roundedRect(ctx,xLegendInitial + 125,yinitial + slotAmount*slotHeigth - 10,10,10,2,'#222', cor_cisco);
 
    //escrevendo legendas
    ctx.font = "13px Helvetica";
    ctx.fillStyle = "#222";
    ctx.fillText("DELL", xLegendInitial + 20, yLegendInitial + 10);
    ctx.fillText("HP", xLegendInitial + 90, yLegendInitial + 10);
+   ctx.fillText("CISCO", xLegendInitial + 145, yLegendInitial + 10);
 }
 
 
@@ -116,6 +119,8 @@ function drawServer(server) {
      ctx.fillStyle = cor_dell;
    } else if (server['fabricante'] == 'HP'){
      ctx.fillStyle = cor_hp;
+   } else if (server['fabricante'] == 'CISCO') {
+     ctx.fillStyle = cor_cisco;
    }
 
   ctx.fillRect(xinitial, yinitial + (server['posicao'][0]-1)*slotHeigth, slotWidth, serverHeight*slotHeigth);
