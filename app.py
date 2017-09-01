@@ -16,6 +16,7 @@ app = Flask(__name__)
 
 app.secret_key = 'likujnyhtbgrvf67543'
 
+#session = dict()
 globalValues = dict()
 globalValues['Header'] = ['Nome','Baia','Categoria','Resp','Serial','Fabricante','Modelo','Localizacao','Rack', 'Posicao','Patrimonio','Hostname','IP','Em uso?','SAID','Contrato','Start Date','End Date','Legado']
 
@@ -51,7 +52,9 @@ def consulta():
 def consulta_result():
 
     bind = binder(session['consulta'], 'c')
-    session['consulta_result'] = dbAsDict(form2db_consulta(bind))
+    tmp_teste = form2db_consulta(bind)
+    #print "\n\n\nLEN: ", len(tmp_teste), "\n\n\n310: ", type(tmp_teste[309].serial), "\n\n\nLAST: ", tmp_teste[len(tmp_teste) - 1].serial, "\n\n\n"
+    session['consulta_result'] = dbAsDict(tmp_teste)#dbAsDict(form2db_consulta(bind))
 
     asDict = session['consulta_result']
     print "\n\nAsDict: ", asDict, "\n\n"
@@ -112,8 +115,13 @@ def insert_result():
     #fazendo bind
     bind = binder(session['insert'], 'u')
 
-    #fazendo insert
-    form2db_insert(bind, session['insert'])
+    try:
+        #fazendo insert
+        form2db_insert(bind, session['insert'])
+    except Exception as e:
+        if e[0].find('Integrity'):
+            error = 'Serial já existente!'
+        return render_template('insert.html', globalValues=globalValues, error=error.decode('utf-8'))
 
     return render_template('insert.html', globalValues=globalValues)
 

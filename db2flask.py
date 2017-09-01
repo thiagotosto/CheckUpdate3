@@ -1,6 +1,8 @@
 def dbAsDict(object_list):
     result = []
     for obj in object_list:
+        print "PASSEEEEEEEEEEI AQUIIIIIIII!!!!!!!!!!!!!!!!!!"
+
         result.append({
                         'nome': str(obj.nome).decode('cp1252'),
                         'baia': str(obj.baia).decode('cp1252'),

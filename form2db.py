@@ -4,13 +4,20 @@ from dbconnect import *
 
 #CONSULTA
 def form2db_consulta(query):    # Recebe como parametro uma lista de dicionario com campo e valor das clausulas
-    
+
     filters = []
     q = dbsession.query(Inventario)
 
     for objeto in query:
         filters.append(objeto)
     result = q.filter(*filters).all()
+
+    with open("/home/ttosto_estag/Thiago/Projetos/Globosat/CheckUpdate3/error.log", "w") as log:
+        string = ""
+        for servidor in result:
+            string = string + str(servidor.serial) + "\n"
+        string = string + str(len(result)) + "\n"
+        log.write(string)
 
     dbsession.commit()
 
@@ -41,8 +48,12 @@ def form2db_insert(campos, atributos):
     for i in range(len(atributos)):
         setattr(new, campos[i], atributos[i]['valor'])
 
-    dbsession.add(new)
-    dbsession.commit()
+    try:
+        dbsession.add(new)
+        dbsession.commit()
+    except:
+        dbsession.rollback()
+        raise
 
 
 #UPDATE
@@ -153,6 +164,3 @@ def parse_posicao(objeto):
     if (len(objeto['posicao']) == 2):
         objeto['posicao'][0] = int(objeto['posicao'][0])
         objeto['posicao'][1] = int(objeto['posicao'][1])
-
-
-
