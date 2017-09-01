@@ -52,9 +52,8 @@ def consulta():
 def consulta_result():
 
     bind = binder(session['consulta'], 'c')
-    tmp_teste = form2db_consulta(bind)
-    #print "\n\n\nLEN: ", len(tmp_teste), "\n\n\n310: ", type(tmp_teste[309].serial), "\n\n\nLAST: ", tmp_teste[len(tmp_teste) - 1].serial, "\n\n\n"
-    session['consulta_result'] = dbAsDict(tmp_teste)#dbAsDict(form2db_consulta(bind))
+
+    session['consulta_result'] = dbAsDict(form2db_consulta(bind))
 
     asDict = session['consulta_result']
     print "\n\nAsDict: ", asDict, "\n\n"
@@ -159,7 +158,7 @@ def remove():
 
     form2db_remove(elemento_atual)
 
-    asDict = session['consulta_result']
+    #asDict = session['consulta_result']
 
     return redirect(url_for('consulta_result'))
 

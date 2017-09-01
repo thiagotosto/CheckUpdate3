@@ -12,13 +12,6 @@ def form2db_consulta(query):    # Recebe como parametro uma lista de dicionario 
         filters.append(objeto)
     result = q.filter(*filters).all()
 
-    with open("/home/ttosto_estag/Thiago/Projetos/Globosat/CheckUpdate3/error.log", "w") as log:
-        string = ""
-        for servidor in result:
-            string = string + str(servidor.serial) + "\n"
-        string = string + str(len(result)) + "\n"
-        log.write(string)
-
     dbsession.commit()
 
     return result

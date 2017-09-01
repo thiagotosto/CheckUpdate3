@@ -18,7 +18,7 @@ dbsession = Session()
 class Inventario(Base):
 	__tablename__ = 'inventario'
 
-	id = Column(String, primary_key=True)
+	id = Column(Integer, primary_key=True)
 	nome = Column(String)
 	baia = Column(Integer)
 	categoria = Column(String)
