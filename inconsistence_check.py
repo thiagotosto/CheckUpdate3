@@ -25,8 +25,8 @@ class Inconsistence_check():
         self.normas['Em uso?'] = 'upper'
         self.normas['SAID'] = ''
         self.normas['Contrato'] = 'upper'
-        self.normas['Start_date'] = ''
-        self.normas['End_date'] = ''
+        self.normas['Start Date'] = ''
+        self.normas['End Date'] = ''
         self.normas['Legado'] = 'upper'
 
     #METODOS DE CONTROLE

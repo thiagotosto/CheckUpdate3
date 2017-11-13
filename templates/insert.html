@@ -33,7 +33,11 @@
               {% for i in range(globalValues['Header']|length - (globalValues['Header']|length/2)|int) %}
                 <div class="input-group">
                   <span class="input-group-addon" id="basic-addon1">{{ globalValues['Header'][i + (globalValues['Header']|length/2)|int] }}</span>
-                  <input type="text" class="form-control" placeholder="" name="{{ globalValues['Header'][i + 9] }}" aria-describedby="basic-addon1">
+                  {% if globalValues['Header'][i + 9] == 'Start Date' or globalValues['Header'][i + 9] == 'End Date' %}
+		  	               <input type="date" class="form-control" placeholder="" name="{{ globalValues['Header'][i + 9] }}" aria-describedby="basic-addon1">
+		              {% else %}
+			                 <input type="text" class="form-control" placeholder="" name="{{ globalValues['Header'][i + 9] }}" aria-describedby="basic-addon1">
+                  {% endif %}
                 </div>
               {% endfor %}
             </div>

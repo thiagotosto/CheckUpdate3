@@ -13,7 +13,6 @@ import thread
 #instanciando a aplicação
 app = Flask(__name__)
 
-
 app.secret_key = 'likujnyhtbgrvf67543'
 
 #session = dict()
@@ -118,6 +117,7 @@ def insert_result():
         #fazendo insert
         form2db_insert(bind, session['insert'])
     except Exception as e:
+        print e
         if e[0].find('Integrity'):
             error = 'Serial já existente!'
         return render_template('insert.html', globalValues=globalValues, error=error.decode('utf-8'))
@@ -180,3 +180,4 @@ def reset_session():
 
 if __name__ == '__main__':
     app.run(threaded=True, debug=True, processes=3)
+    #app.run(debug=True)
