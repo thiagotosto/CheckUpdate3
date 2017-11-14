@@ -38,7 +38,8 @@ function validateConsulta() {
   };
 
   if (campo == "Legado"){
-    if ((valor != "Produção") && (valor != "Legado")){
+    console.log(campo);
+    if ((valor != "produção") && (valor != "legado")){
         alert("O valor deve ser 'Legado' ou 'Produção'");
         return false;
     };
@@ -78,7 +79,7 @@ function validateUpdate() {
       return false;
   };
 
-  if ((form['Legado'].value.toLowerCase() != "Legado") && (form['Legado'].value.toLowerCase() != "Produção") && (form['Legado'].value.toLowerCase() != '')) {
+  if ((form['Legado'].value.toLowerCase() != "legado") && (form['Legado'].value.toLowerCase() != "produção") && (form['Legado'].value.toLowerCase() != '')) {
       alert("O valor deve ser 'Legado' ou 'Produção'");
       return false;
   }
@@ -111,7 +112,8 @@ function validateInsert() {
       return false;
   };
 
-  if ((form['Legado'].value.toLowerCase() != "Legado") && (form['Legado'].value.toLowerCase() != "Produção") && (form['Legado'].value.toLowerCase() != '')) {
+
+  if ((form['Legado'].value.toLowerCase() != "legado") && (form['Legado'].value.toLowerCase() != "produção") && (form['Legado'].value.toLowerCase() != '')) {
       alert("O valor deve ser 'Legado' ou 'Produção'");
       return false;
   }

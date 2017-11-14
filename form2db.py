@@ -145,7 +145,7 @@ def binder(to_bind, flag):    #recebe como parametro um tupla de dicionarios que
             if objeto['campo'] == 'End Date':
                 query.append('end_date')
             if objeto['campo'] == 'Legado':
-                query.append('legado')
+                query.append('leg_prod')
             if objeto['campo'] == 'Posicao':
                 query.append('posicao')
 

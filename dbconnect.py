@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 
-home = '/home/ttosto_estag/Thiago/Projetos/Globosat/CheckUpdate3/'
+home = '/opt/inventario/CheckUpdate3/'
 
 with open(home + '.string_connection','r' ) as string:
 	string_connection = string.read()
