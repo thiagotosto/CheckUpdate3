@@ -17,7 +17,7 @@ class Inconsistence_check():
         self.normas['Fabricante'] = 'upper'
         self.normas['Modelo'] = 'capt'
         self.normas['Localizacao'] = ''
-        self.normas['Rack'] = ''
+        self.normas['Rack'] = 'upper'
         self.normas['Posicao'] = ''
         self.normas['Patrimonio'] = ''
         self.normas['Hostname'] = 'lower'

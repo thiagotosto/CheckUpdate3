@@ -16,8 +16,8 @@ function validateConsulta() {
 
     //'Fabricante' check
     if (campo == "Fabricante"){
-      if ((valor != "dell") && (valor != "hp") && (valor != "cisco")) {
-          alert("O valor deve 'DELL' ou 'HP' ou 'CISCO'");
+      if ((valor != "dell") && (valor != "hp") && (valor != "cisco") && (valor != "brocade")){
+          alert("O valor deve 'DELL' ou 'HP' ou 'CISCO' ou 'BROCADE'");
           return false;
     };
   };
@@ -62,8 +62,8 @@ function validateUpdate() {
   var form = document.forms['edicao'];
 
   //'Fabricante' check
-  if ((form['Fabricante'].value.toLowerCase() != "dell") && (form['Fabricante'].value.toLowerCase() != "hp") && (form['Fabricante'].value.toLowerCase() != "cisco") && (form['Fabricante'].value.toLowerCase() != '')) {
-      alert("O valor de 'Fabricante' deve ser 'DELL' ou 'HP' ou 'CISCO'");
+  if ((form['Fabricante'].value.toLowerCase() != "dell") && (form['Fabricante'].value.toLowerCase() != "hp") && (form['Fabricante'].value.toLowerCase() != "cisco") && (form['Fabricante'].value.toLowerCase() != "brocade") && (form['Fabricante'].value.toLowerCase() != '')) {
+      alert("O valor de 'Fabricante' deve ser 'DELL' ou 'HP' ou 'CISCO' ou 'BROCADE'");
       return false;
   };
 
@@ -95,8 +95,8 @@ function validateInsert() {
   };
 
   //'Fabricante' check
-  if ((form['Fabricante'].value.toLowerCase() != "dell") && (form['Fabricante'].value.toLowerCase() != "hp") && (form['Fabricante'].value.toLowerCase() != "cisco") && (form['Fabricante'].value.toLowerCase() != '')) {
-      alert("O valor de 'Fabricante' deve ser 'DELL' ou 'HP' ou 'CISCO'");
+  if ((form['Fabricante'].value.toLowerCase() != "dell") && (form['Fabricante'].value.toLowerCase() != "hp") && (form['Fabricante'].value.toLowerCase() != "cisco") && (form['Fabricante'].value.toLowerCase() != "brocade") && (form['Fabricante'].value.toLowerCase() != '')) {
+      alert("O valor de 'Fabricante' deve ser 'DELL' ou 'HP' ou 'CISCO' ou 'BROCADE'");
       return false;
   };
 

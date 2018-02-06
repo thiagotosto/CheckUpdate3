@@ -16,6 +16,18 @@ def form2db_consulta(query):    # Recebe como parametro uma lista de dicionario 
 
     return result
 
+# CONSULTA EXATA DE RACK
+def form2db_consulta_rack(query):    # Recebe como um dicionario com campo e valor das clausulas
+
+    filters = []
+    q = dbsession.query(Inventario)
+
+    result = q.filter_by(rack = query['valor']).all()
+
+    dbsession.commit()
+
+    return result
+
 #UPDATE
 def form2db_update(target, value, indexes):
 

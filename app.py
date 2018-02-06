@@ -136,8 +136,7 @@ def bayface():
     if (request.method == 'POST'):
         rack = request.form['rack_input']
 
-    bind = binder([{'campo': 'Rack', 'valor': rack}], 'c')
-    session['bayface_rack'] = dbAsDict(form2db_consulta(bind))
+    session['bayface_rack'] = dbAsDict(form2db_consulta_rack({'campo': 'Rack', 'valor': rack}))
 
     #transformando lista de pbjetos em lista de dicionarios correspondentes
     asDict = session['bayface_rack']
